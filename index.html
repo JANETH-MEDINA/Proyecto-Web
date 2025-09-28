@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>DANCE STUDIO</title>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <a href="#Inscripcion">Inscripción</a>
+                <a href="#RegistroM">Registro de Maestros</a>
+                <a href="#Clases">Menú</a></li>
+                <!--/ul>
+        </nav-->
+    </header>
+
+    <h2><a id="Inscripcion"> Inscripción a clases </a></h2>
+    <form id="formInscripcion">
+        <label for="nombreInscripcion">Nombre:</label>
+        <input type="text" id="nombreInscripcion" name="nombre" required>
+
+        <label for="claseInscripcion">Clase:</label>
+        <select id="claseInscripcion" name="clase">
+      <option value="KPOP">KPOP</option>
+      <option value="FOLKLORE">FOLKLORE</option>
+      <option value="BALLET">BALLET</option>
+      <option value="DANZA ARABE">DANZA ARABE</option>
+      <option value="DANZA CONTEMPORANEA">DANZA CONTEMPORANEA</option>
+      <option value="HIP-HOP">HIP-HOP</option>
+      <option value="TAP">TAP</option>
+    </select>
+
+        <button type="submit">Inscribirse</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <img src="im1.jpg" alt="Foto del estudio" style="width:100%; max-width:600px; display:block; margin:0px auto;">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2><a id="RegistroM"> Registrar maestro </a></h2>
+    <form id="formMaestro">
+        <label for="nombreMaestro">Nombre:</label>
+        <input type="text" id="nombreMaestro" name="nombreMaestro" required>
+
+        <label for="especialidad">Especialidad:</label>
+        <input type="text" id="especialidad" name="especialidad">
+
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo">
+
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono">
+
+        <button type="submit">Registrar Maestro</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <img src="im2.jpg" alt="Foto del estudio" style="width:100%; max-width:600px; display:block; margin:20px auto;">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2 id="indice"><a id="Clases"> CLASES QUE SE IMPARTEN Y HORARIOS</a></h2>
+    <div class="menu">
+        <ul>
+            <li><a href="#Misión">MISIÓN</a></li>
+            <li><a href="#Visión">VISIÓN</a></li>
+            <li><a href="#kpop">KPOP</a></li>
+            <li><a href="#folklore">FOLKLORE</a></li>
+            <li><a href="#ballet">BALLET</a></li>
+            <li><a href="#danzaa">DANZA ARABE</a></li>
+            <li><a href="#danzac">DANZA CONTEMPORANEA</a></li>
+            <li><a href="#hiphop">HIP-HOP</a></li>
+            <li><a href="#tap">TAP</a></li>
+            <li><a href="#horarios">HORARIOS</a></li>
+        </ul>
+    </div>
+
+
+
+    <script>
+        // Inscripción a clases
+        document.getElementById('formInscripcion').addEventListener('submit', async(e) => {
+            e.preventDefault();
+
+            const nombre = document.getElementById('nombreInscripcion').value;
+            const clase = document.getElementById('claseInscripcion').value;
+
+            const res = await fetch('/guardar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nombre,
+                    clase
+                })
+            });
+
+            const data = await res.json();
+            alert(data.mensaje);
+        });
+
+        // Registro de maestro
+        document.getElementById('formMaestro').addEventListener('submit', async(e) => {
+            e.preventDefault();
+
+            const nombre = document.getElementById('nombreMaestro').value;
+            const especialidad = document.getElementById('especialidad').value;
+            const correo = document.getElementById('correo').value;
+            const telefono = document.getElementById('telefono').value;
+
+            const res = await fetch('/registrar-maestro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nombre,
+                    especialidad,
+                    correo,
+                    telefono
+                })
+            });
+
+            const data = await res.json();
+            alert(data.mensaje);
+        });
+    </script>
+
+
+    <br>
+    <img src="Estudio1.jpg" alt="Foto del estudio" style="width:100%; max-width:600px; display:block; margin:20px auto;">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <section>
+        <h3>
+            <a id="Mision">Mision</a></h3>
+        <p>
+            Fomentar la expresión artística, la disciplina y la diversidad cultural a través de la enseñanza de múltiples estilos de danza. Nuestro estudio busca inspirar a personas de todas las edades a descubrir su pasión por el baile, desarrollando habilidades
+            técnicas, confianza y creatividad en un ambiente inclusivo y motivador.
+        </p>
+        </h3>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h3>
+            <a id="Vision">Vision</a></h3>
+        <p>
+            Ser un referente en la formación integral de bailarines en México, reconocido por su excelencia académica, innovación pedagógica y compromiso con la preservación y evolución de las artes escénicas. Aspiramos a construir una comunidad vibrante donde el
+            arte del movimiento transforme vidas y conecte culturas.
+        </p>
+        </h3>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="kpop">
+            <h3> <a id="kpop"> KPOP </a> </h3>
+            <p>
+                Kpop o k-pop, es también llamado pop coreano y se trata de un estilo de música que es “originaria” de Corea del Sur y tiene como peculiaridad que se encuentra conformada por distintos tipos de música, éste a pesar de que se encuentra compuesto por gran
+                diversidad de géneros musicales de tipo popular surcoreano, el término se aplica con mayor frecuencia a la Industria musical que se caracteriza por introducir géneros de música y estilos provenientes de occidente, como por ejemplo el rock,
+                el jazz, hip-hop, reggae, country y música clásica, todo ello por encima de las raíces musicales autóctonas de Corea.
+            </p>
+            <image src="kpop.gif">
+                <br>
+                <a href="#indice">Return</a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="folklore">
+            <h3>
+                <a id="folklore">FOLKLORE</a>
+            </h3>
+            <p>
+                Los Bailes folklóricos en México han sido tradicionalmente una forma de honrar a la cultura mexicana y una representación de las luchas y las alegrías de la vida cotidiana mexicana. Es una celebración de los rituales religiosos y culturales y festivales,
+                que se celebra por la gente de nuestro pais. El origen de las danzas folklóricas mexicanas se encuentra en los tiempos mesoamericanos, cuando la danza ritual se realizó para apaciguar a los dioses de los Mayas y los Aztecas.
+            </p>
+            <br>
+            <image src="folklore.gif">
+                <br>
+                <a href="#indice">Return</a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="ballet">
+            <h3>
+                <a id="ballet">BALLET</a></h3>
+            <p>
+                El ballet es un arte escénico que puede incluir danza, música de orquesta, coro, mímica, actuación, escenografía, vestuario y relatos fantásticos. Todo depende de quién sea su creador y de la época en que se haya creado. </p>
+            <image src="ballet.gif">
+                <br>
+                <a href="#indice">Return</a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="arabe">
+            <h3>
+                <a id="danzaa">DANZA ARABE</a></h3>
+            <p>
+                La danza árabe es una danza milenaria. Tiene su origen en Egipto, donde se bailaba en los templos, como parte del culto a la fertilidad humana, de la tierra y la adoración a los dioses. Con la invasión árabe se bailaba en los harenes de los sultanes y
+                más tarde se empezó a bailar profesionalmente.</p>
+            <image src="arabe.gif">
+                <br>
+                <a href="#indice">Return</a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="contemporaneo">
+            <h3>
+                <a id="danzac">DANZA CONTEMPORANEA</a></h3>
+            <p>
+                La danza contemporánea se entiende como la evolución natural hacia la libertad de expresión y de movimientos, eliminando las barreras de estilos más clásicos. Se basa en transmitir sentimientos y vivencias, evitando representar únicamente el concepto
+                de belleza tradicional.</p>
+            <image src="contemporaneo.gif">
+                <br>
+                <a href="#indice">Return</a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="hiphop">
+            <h3>
+                <a id="hiphop">HIP-HOP</a></h3>
+            <p>
+                El hip hop es conocido mundialmente como una corriente musical basada en rimar a gran velocidad sobre una base rítmica, pero en realidad es el movimiento cultural que engloba cuatro manifestaciones artísticas: DJ, MC (maestro de ceremonias en español),
+                breakdance y grafiti.</p>
+            <image src="hip hop.gif">
+                <br>
+                <a href="#indice">Return</a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="tap">
+            <h3>
+                <a id="tap">TAP</a></h3>
+            <p>
+                El nombre viene del sonido que hacen las placas pequeñas de metal colocadas en los zapatos del bailarín cuando tocan el piso.La danza tap comenzó en el año 1830 en la vecindad de New York City como una fusión de las danzas irlandesas, escocesas e inglesas
+                y posiblemente de la combinación de la danza africana.
+            </p>
+            <image src="tap.gif">
+                <br>
+                <a href="#indice">Return</a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <Table border>
+            <tr>
+                <th scope="row" colspan="8" id="horarios">HORARIO DE CLASES</th>
+            </tr>
+
+            <TR>
+                <th>HORAS</th>
+                <td>LUNES</td>
+                <td>MARTES</td>
+                <td>MIERCOLES</td>
+                <td>JUEVES</td>
+                <td>VIERNES</td>
+                <td>SABADO</td>
+                <td>DOMINGO</td>
+            </TR>
+
+            <TR>
+                <td>10:00-11:00</td>
+                <td>Folklore</td>
+                <td>Tap</td>
+                <td></td>
+                <td>Danza Arabe</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </TR>
+
+            <TR>
+                <td>11:00-12:00</td>
+                <td>Folklore</td>
+                <td>Kpop</td>
+                <td></td>
+                <td>Danza Arabe</td>
+                <td>Danza contemporanea</td>
+                <td>Hip-Hop</td>
+                <td></td>
+            </TR>
+
+            <TR>
+                <td>12:00-13:00</td>
+                <td></td>
+                <td></td>
+                <td>Ballet</td>
+                <td></td>
+                <td>Danza contemporanea</td>
+                <td></td>
+                <td>Tap</td>
+            </TR>
+
+            <TR>
+                <td>13:00-14:00</td>
+                <td></td>
+                <td></td>
+                <td>Ballet</td>
+                <td>Tap</td>
+                <td>Ballet</td>
+                <td></td>
+                <td>Tap</td>
+            </TR>
+
+            <TR>
+                <td>14:00-15:00</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Ballet</td>
+                <td></td>
+                <td></td>
+            </TR>
+
+            <TR>
+                <td>15:00-16:00</td>
+                <td></td>
+                <td>Danza Arabe</td>
+                <td>Hip-Hop</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </TR>
+            <TR>
+                <td>16:00-17:00</td>
+                <td>Hip-Hop</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Kpop</td>
+                <td></td>
+            </TR>
+            <TR>
+                <td>17:00-18:00</td>
+                <td>Hip-Hop</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Folklore</td>
+                <td>Kpop</td>
+                <td></td>
+            </TR>
+            <TR>
+                <td>18:00-19:00</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Danza Contemporanea</td>
+                <td>Folklore</td>
+                <td></td>
+                <td>Kpop</td>
+            </TR>
+            <TR>
+                <td>19:00-20:00</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Danza contemporanea</td>
+                <td></td>
+                <td></td>
+                <td>Danza Arabe</td>
+            </TR>
+        </Table>
+        <br>
+        <a href="#indice">Return</a>
+
+
+
+</body>
+
+</html>
