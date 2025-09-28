@@ -62,4 +62,4 @@ app.get('/clases', async(req, res) => {
 // Inicia el servidor
 app.listen(port, '0.0.0.0', () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
-}); //prueba
+});
