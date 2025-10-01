@@ -18,6 +18,13 @@ header {
     text-align: right;
 }
 
+h2 {
+    text-decoration: underline;
+    padding-top: 30px;
+    text-align: center;
+    font-size: 30px;
+}
+
 header h1 {
     width: 200px;
     margin: auto;
@@ -37,13 +44,6 @@ header h1 {
     background-color: rosybrown;
     padding: 10px;
     overflow: hidden;
-}
-
-h2 {
-    text-decoration: underline;
-    padding-top: 30px;
-    text-align: center;
-    font-size: 30px;
 }
 
 p.texto {
