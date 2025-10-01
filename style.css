@@ -7,8 +7,8 @@ body {
 header {
     background-image: url("Intro.jpg");
     font-family: "Segoe Print", cursive;
-    width: 1500px;
-    height: 600px;
+    width: 1450px;
+    height: 500px;
     margin: 0%;
     margin-bottom: 0px;
     padding-bottom: 0px;
@@ -16,13 +16,6 @@ header {
     background-repeat: no-repeat;
     background-position: 100%;
     text-align: right;
-}
-
-h2 {
-    text-decoration: underline;
-    padding-top: 30px;
-    text-align: center;
-    font-size: 30px;
 }
 
 header h1 {
