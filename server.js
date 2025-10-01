@@ -5,7 +5,7 @@ const { Pool } = require('pg');
 const app = express();
 const port = 3001;
 
-// Configura tu conexión a PostgreSQL
+// Conexión a PostgreSQL
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
@@ -14,7 +14,7 @@ const pool = new Pool({
     port: 5432,
 });
 
-// Middleware
+
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
 
@@ -32,6 +32,31 @@ app.post('/guardar', async(req, res) => {
         res.status(500).json({ mensaje: 'Error al guardar' });
     }
 });
+//RUta para Bajaas 
+app.delete('/eliminar-inscripcion/:nombre', async(req, res) => {
+    const { nombre } = req.params;
+    try {
+        await pool.query('DELETE FROM inscripciones WHERE nombre = $1', [nombre]);
+        res.json({ mensaje: 'Inscripción eliminada correctamente' });
+    } catch (error) {
+        console.error('Error al eliminar inscripción:', error);
+        res.status(500).json({ mensaje: 'Error al eliminar inscripción' });
+    }
+});
+//ruta para modificaciones
+app.put('/modificar-inscripcion', async(req, res) => {
+    const { nombre, nuevaClase } = req.body;
+    try {
+        await pool.query(
+            'UPDATE inscripciones SET clase = $1 WHERE nombre = $2', [nuevaClase, nombre]
+        );
+        res.json({ mensaje: 'Inscripción modificada correctamente' });
+    } catch (error) {
+        console.error('Error al modificar inscripción:', error);
+        res.status(500).json({ mensaje: 'Error al modificar inscripción' });
+    }
+});
+
 
 // Ruta para registrar maestros
 app.post('/registrar-maestro', async(req, res) => {
