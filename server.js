@@ -2,9 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
 const app = express();
-const port = 80;
+const path = require('path');
+//app.use(express.static(path.join(__dirname, 'public')));
+app.get('/Directorio', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'Directorio', 'index.html'));
+});
 
-// Configura tu conexión a PostgreSQL
+const port = 3001;
+
+// Conexión a PostgreSQL
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
@@ -60,5 +66,5 @@ app.get('/clases', async(req, res) => {
 
 // Inicia el servidor
 app.listen(port, '0.0.0.0', () => {
-    console.log(`Servidor corriendo en http://localhost:${port}`);
+    console.log(`Servidor corriendo en http://localhost:${port}/`);
 });
