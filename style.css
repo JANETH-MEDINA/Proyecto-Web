@@ -1,7 +1,7 @@
 body {
     background-color: gray;
     font-family: Copperplate Gothic;
-    margin: 0 200;
+    margin: 0 200px;
 }
 
 header {
@@ -21,7 +21,7 @@ header {
 header h1 {
     width: 200px;
     margin: auto;
-    padding: auto;
+    padding: 20px;
     text-align: right;
 }
 
@@ -76,6 +76,18 @@ h3 {
     padding-bottom: 25px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 25px;
+}
+
+.tabla-con-borde {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.tabla-con-borde th,
+.tabla-con-borde td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
 }
 
 a:link {
