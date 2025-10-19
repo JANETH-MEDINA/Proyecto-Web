@@ -1,4 +1,17 @@
 body {
+    animation: fadeInBody 1s ease-in;
+}
+
+@keyframes fadeInBody {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+body {
     background-color: gray;
     font-family: Copperplate Gothic;
     margin: 0 200px;
@@ -7,8 +20,8 @@ body {
 header {
     background-image: url("Intro.jpg");
     font-family: "Segoe Print", cursive;
-    width: 1450px;
-    height: 500px;
+    width: 1400px;
+    height: 800px;
     margin: 0%;
     margin-bottom: 0px;
     padding-bottom: 0px;
