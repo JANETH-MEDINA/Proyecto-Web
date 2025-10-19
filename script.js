@@ -20,5 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error al enviar datos:', error);
             alert('Hubo un problema al enviar tu inscripción');
         }
+        const result = await response.json();
+        alert(result.mensaje);
+
+        // Animación al enviar correctamente
+        form.classList.add("animate__animated", "animate__pulse");
+        setTimeout(() => {
+            form.classList.remove("animate__pulse");
+        }, 1000);
+
     });
 });
