@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JANETH-MEDINA/PROGRA-WEB@main/formulario.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <title>DANCE STUDIO</title>
 
 </head>
@@ -13,12 +14,10 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <a href="#Inscripcion">Inscripción</a>
-                <a href="#RegistroM">Registro de Maestros</a>
-                <a href="#Clases">Menú</a></li>
-                <!--/ul>
-        </nav-->
+            <a href="#Inscripcion">Inscripción</a>
+            <a href="#RegistroM">Registro de Maestros</a>
+            <a href="#Clases">Menú</a>
+        </nav>
     </header>
 
     <h2><a id="Inscripcion"> Inscripción a clases </a></h2>
@@ -38,8 +37,11 @@
     </select>
 
         <button type="submit">Inscribirse</button>
+        <button type="submit">Eliminar</button>
+        <button type="submit">Modificar</button>
     </form>
     <br>
+
     <br>
     <br>
     <br>
@@ -65,6 +67,7 @@
         <input type="text" id="telefono" name="telefono">
 
         <button type="submit">Registrar Maestro</button>
+        <button type="submit">Eliminar</button>
 
     </form>
     <br>
@@ -458,6 +461,97 @@
     <a href="#indice">Return</a>
 
 
+    <script>
+        $(document).ready(function() {
+            // Validación de inscripción
+            $("#formInscripcion").validate({
+                messages: {
+                    nombre: "¡Ponle nombre al bailarín!",
+                    clase: "Selecciona una clase que lo haga brillar 💃"
+                }
+            });
+
+            // Validación de maestro
+            $("#formMaestro").validate({
+                messages: {
+                    nombreMaestro: "¿Cómo se llama el maestro?",
+                    correo: "Ese correo no baila bien 💌",
+                    telefono: "¡Falta el número para contactarlo!"
+                }
+            });
+
+            // Animación en botones
+            $("button[type='submit']").click(function() {
+                $(this).text("¡Listo!").fadeOut(1000).fadeIn(1000);
+            });
+        });
+    </script>
+    <!-- Script de validación y envío -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const formulario = document.querySelector("#formulario");
+            const nombreInput = formulario.querySelector("#nombre");
+            const correoInput = formulario.querySelector("#correo");
+
+            if (!formulario || !nombreInput || !correoInput) {
+                console.warn("Formulario o campos no encontrados.");
+                return;
+            }
+
+            formulario.addEventListener("submit", async(e) => {
+                e.preventDefault();
+
+                const nombre = nombreInput.value.trim();
+                const correo = correoInput.value.trim();
+                const errores = [];
+
+                if (nombre.length < 3 || nombre.length > 20) {
+                    errores.push("El nombre debe tener entre 3 y 20 caracteres.");
+                }
+
+                const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!correoRegex.test(correo)) {
+                    errores.push("El correo no tiene un formato válido.");
+                }
+
+                formulario.querySelectorAll("ul.mensajes-error").forEach((el) => el.remove());
+
+                if (errores.length > 0) {
+                    const erroresContainer = document.createElement("ul");
+                    erroresContainer.classList.add("mensajes-error");
+                    erroresContainer.style.color = "red";
+
+                    errores.forEach((error) => {
+                        const li = document.createElement("li");
+                        li.textContent = error;
+                        erroresContainer.appendChild(li);
+                    });
+
+                    formulario.appendChild(erroresContainer);
+                    return;
+                }
+
+                try {
+                    const response = await fetch("/api/enviar", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            nombre,
+                            correo
+                        })
+                    });
+
+                    const result = await response.json();
+                    alert(result.mensaje || "Datos enviados correctamente");
+                } catch (error) {
+                    console.error("Error al enviar datos:", error);
+                    alert("Hubo un problema al enviar tu inscripción");
+                }
+            });
+        });
+    </script>
 
 </body>
 
