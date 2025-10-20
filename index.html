@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
@@ -42,7 +41,7 @@
     <div class="container my-5">
         <!-- Sección de Inscripción -->
         <section id="Inscripcion" class="mb-5 animate__animated animate__fadeInUp">
-            <h2 class="section-title"><a id="Inscripcion">Inscripción a clases</a></h2>
+            <h2 class="section-title">Inscripción a clases</h2>
             <div class="card form-card shadow-lg">
                 <div class="card-body">
                     <form id="formInscripcion" novalidate>
@@ -82,525 +81,526 @@
             <div class="text-center my-4">
                 <img src="https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?w=800&q=80" alt="Estudio de baile" class="img-fluid rounded shadow dance-img">
             </div>
-        </section>
 
-        <!-- Sección de Registro de Maestros -->
-        <section id="RegistroM" class="mb-5 animate__animated animate__fadeInUp">
-            <h2 class="section-title"><a id="RegistroM">Registrar maestro</a></h2>
-            <div class="card form-card shadow-lg">
-                <div class="card-body">
-                    <form id="formMaestro" novalidate>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="nombreMaestro" class="form-label">Nombre del maestro</label>
-                                <input type="text" class="form-control" id="nombreMaestro" name="nombreMaestro" required minlength="3" placeholder="Nombre completo">
-                                <div class="invalid-feedback">Ingresa el nombre (mínimo 3 caracteres)</div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="especialidad" class="form-label">Especialidad</label>
-                                <input type="text" class="form-control" id="especialidad" name="especialidad" required placeholder="Ej: Ballet, Hip-Hop">
-                                <div class="invalid-feedback">Ingresa la especialidad</div>
-                            </div>
+        </section>
+    </div>
+    <!-- Sección de Registro de Maestros -->
+    <section id="RegistroM" class="mb-5 animate__animated animate__fadeInUp">
+        <h2 class="section-title">Registrar maestro</h2>
+        <div class="card form-card shadow-lg">
+            <div class="card-body">
+                <form id="formMaestro" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="nombreMaestro" class="form-label">Nombre del maestro</label>
+                            <input type="text" class="form-control" id="nombreMaestro" name="nombreMaestro" required minlength="3" placeholder="Nombre completo">
+                            <div class="invalid-feedback">Ingresa el nombre (mínimo 3 caracteres)</div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="correo" class="form-label">Correo electrónico</label>
-                                <input type="email" class="form-control" id="correo" name="correo" required placeholder="correo@ejemplo.com">
-                                <div class="invalid-feedback">Ingresa un correo válido</div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="telefono" class="form-label">Teléfono</label>
-                                <input type="tel" class="form-control" id="telefono" name="telefono" required pattern="[0-9]{10}" placeholder="10 dígitos">
-                                <div class="invalid-feedback">Ingresa un teléfono válido (10 dígitos)</div>
-                            </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="especialidad" class="form-label">Especialidad</label>
+                            <input type="text" class="form-control" id="especialidad" name="especialidad" required placeholder="Ej: Ballet, Hip-Hop">
+                            <div class="invalid-feedback">Ingresa la especialidad</div>
                         </div>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button type="submit" class="btn btn-primary btn-dance" id="btnRegistrarMaestro">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="correo" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="correo" name="correo" required placeholder="correo@ejemplo.com">
+                            <div class="invalid-feedback">Ingresa un correo válido</div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono" name="telefono" required pattern="[0-9]{10}" placeholder="10 dígitos">
+                            <div class="invalid-feedback">Ingresa un teléfono válido (10 dígitos)</div>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-primary btn-dance" id="btnRegistrarMaestro">
                                 <i class="bi bi-person-plus"></i> Registrar Maestro
                             </button>
-                            <button type="button" class="btn btn-warning btn-dance" id="btnModificarMaestro">
+                        <button type="button" class="btn btn-warning btn-dance" id="btnModificarMaestro">
                                 <i class="bi bi-pencil"></i> Modificar
                             </button>
-                            <button type="button" class="btn btn-danger btn-dance" id="btnEliminarMaestro">
+                        <button type="button" class="btn btn-danger btn-dance" id="btnEliminarMaestro">
                                 <i class="bi bi-trash"></i> Eliminar
                             </button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
-            <div class="text-center my-4">
-                <img src="https://plus.unsplash.com/premium_photo-1685015991843-682e96076102?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGJhaWxlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Clase de baile" class="img-fluid rounded shadow dance-img">
-            </div>
-        </section>
+        </div>
+        <div class="text-center my-4">
+            <img src="https://plus.unsplash.com/premium_photo-1685015991843-682e96076102?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGJhaWxlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Clase de baile" class="img-fluid rounded shadow dance-img">
+        </div>
+    </section>
 
-        <!-- Menú de Clases -->
-        <section id="Clases" class="mb-5">
-            <h2 class="section-title" id="indice"><a id="Clases">CLASES QUE SE IMPARTEN Y HORARIOS</a></h2>
-            <div class="card shadow-lg menu-card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <ul class="list-group list-group-flush menu">
-                                <li class="list-group-item menu-item"><a href="#Mision">MISIÓN</a></li>
-                                <li class="list-group-item menu-item"><a href="#Vision">VISIÓN</a></li>
-                                <li class="list-group-item menu-item"><a href="#kpop">KPOP</a></li>
-                                <li class="list-group-item menu-item"><a href="#folklore">FOLKLORE</a></li>
-                                <li class="list-group-item menu-item"><a href="#ballet">BALLET</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="list-group list-group-flush menu">
-                                <li class="list-group-item menu-item"><a href="#danzaa">DANZA ÁRABE</a></li>
-                                <li class="list-group-item menu-item"><a href="#danzac">DANZA CONTEMPORÁNEA</a></li>
-                                <li class="list-group-item menu-item"><a href="#hiphop">HIP-HOP</a></li>
-                                <li class="list-group-item menu-item"><a href="#tap">TAP</a></li>
-                                <li class="list-group-item menu-item"><a href="#horarios">HORARIOS</a></li>
-                            </ul>
-                        </div>
+    <!-- Menú de Clases -->
+    <section id="Clases" class="mb-5">
+        <h2 class="section-title" id="indice">CLASES QUE SE IMPARTEN Y HORARIOS</h2>
+        <div class="card shadow-lg menu-card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush menu">
+                            <li class="list-group-item menu-item"><a href="#Mision">MISIÓN</a></li>
+                            <li class="list-group-item menu-item"><a href="#Vision">VISIÓN</a></li>
+                            <li class="list-group-item menu-item"><a href="#kpop">KPOP</a></li>
+                            <li class="list-group-item menu-item"><a href="#folklore">FOLKLORE</a></li>
+                            <li class="list-group-item menu-item"><a href="#ballet">BALLET</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-group list-group-flush menu">
+                            <li class="list-group-item menu-item"><a href="#danzaa">DANZA ÁRABE</a></li>
+                            <li class="list-group-item menu-item"><a href="#danzac">DANZA CONTEMPORÁNEA</a></li>
+                            <li class="list-group-item menu-item"><a href="#hiphop">HIP-HOP</a></li>
+                            <li class="list-group-item menu-item"><a href="#tap">TAP</a></li>
+                            <li class="list-group-item menu-item"><a href="#horarios">HORARIOS</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <div class="text-center my-5">
-            <img src="https://images.unsplash.com/photo-1621976360623-004223992275?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGJhaWxlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Estudio" class="img-fluid rounded shadow dance-img">
         </div>
+    </section>
+
+    <div class="text-center my-5">
+        <img src="https://images.unsplash.com/photo-1621976360623-004223992275?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGJhaWxlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Estudio" class="img-fluid rounded shadow dance-img">
+    </div>
 
 
-        <script>
-            // Inscripción a clases
-            document.getElementById('formInscripcion').addEventListener('submit', async(e) => {
-                e.preventDefault();
+    <script>
+        // Inscripción a clases
+        document.getElementById('formInscripcion').addEventListener('submit', async(e) => {
+            e.preventDefault();
 
-                const nombre = document.getElementById('nombreInscripcion').value;
-                const clase = document.getElementById('claseInscripcion').value;
+            const nombre = document.getElementById('nombreInscripcion').value;
+            const clase = document.getElementById('claseInscripcion').value;
 
+            try {
+                const res = await fetch('/guardar', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nombre,
+                        clase
+                    })
+                });
+
+                const data = await res.json();
+                alert(data.mensaje);
+                document.getElementById('formInscripcion').reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al guardar la inscripción');
+            }
+        });
+
+        // Botón Eliminar Inscripción
+        document.getElementById('btnEliminarInscripcion').addEventListener('click', async() => {
+            const nombre = document.getElementById('nombreInscripcion').value;
+            if (!nombre) {
+                alert('Por favor ingresa un nombre para eliminar');
+                return;
+            }
+
+            if (confirm('¿Estás seguro de eliminar esta inscripción?')) {
                 try {
-                    const res = await fetch('/guardar', {
-                        method: 'POST',
+                    const res = await fetch('/eliminar-inscripcion', {
+                        method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            nombre,
-                            clase
+                            nombre
                         })
                     });
-
                     const data = await res.json();
                     alert(data.mensaje);
                     document.getElementById('formInscripcion').reset();
                 } catch (error) {
                     console.error('Error:', error);
-                    alert('Error al guardar la inscripción');
+                    alert('Error al eliminar');
                 }
-            });
+            }
+        });
 
-            // Botón Eliminar Inscripción
-            document.getElementById('btnEliminarInscripcion').addEventListener('click', async() => {
-                const nombre = document.getElementById('nombreInscripcion').value;
-                if (!nombre) {
-                    alert('Por favor ingresa un nombre para eliminar');
-                    return;
-                }
+        // Botón Modificar Inscripción
+        document.getElementById('btnModificarInscripcion').addEventListener('click', async() => {
+            const nombre = document.getElementById('nombreInscripcion').value;
+            const clase = document.getElementById('claseInscripcion').value;
 
-                if (confirm('¿Estás seguro de eliminar esta inscripción?')) {
-                    try {
-                        const res = await fetch('/eliminar-inscripcion', {
-                            method: 'DELETE',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                nombre
-                            })
-                        });
-                        const data = await res.json();
-                        alert(data.mensaje);
-                        document.getElementById('formInscripcion').reset();
-                    } catch (error) {
-                        console.error('Error:', error);
-                        alert('Error al eliminar');
-                    }
-                }
-            });
+            if (!nombre) {
+                alert('Por favor ingresa un nombre para modificar');
+                return;
+            }
 
-            // Botón Modificar Inscripción
-            document.getElementById('btnModificarInscripcion').addEventListener('click', async() => {
-                const nombre = document.getElementById('nombreInscripcion').value;
-                const clase = document.getElementById('claseInscripcion').value;
+            try {
+                const res = await fetch('/modificar-inscripcion', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nombre,
+                        clase
+                    })
+                });
+                const data = await res.json();
+                alert(data.mensaje);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al modificar');
+            }
+        });
 
-                if (!nombre) {
-                    alert('Por favor ingresa un nombre para modificar');
-                    return;
-                }
+        // Registro de maestro
+        document.getElementById('formMaestro').addEventListener('submit', async(e) => {
+            e.preventDefault();
 
+            const nombre = document.getElementById('nombreMaestro').value;
+            const especialidad = document.getElementById('especialidad').value;
+            const correo = document.getElementById('correo').value;
+            const telefono = document.getElementById('telefono').value;
+
+            try {
+                const res = await fetch('/registrar-maestro', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nombre,
+                        especialidad,
+                        correo,
+                        telefono
+                    })
+                });
+
+                const data = await res.json();
+                alert(data.mensaje);
+                document.getElementById('formMaestro').reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al registrar maestro');
+            }
+        });
+
+        // Botón Eliminar Maestro
+        document.getElementById('btnEliminarMaestro').addEventListener('click', async() => {
+            const nombre = document.getElementById('nombreMaestro').value;
+            if (!nombre) {
+                alert('Por favor ingresa un nombre para eliminar');
+                return;
+            }
+
+            if (confirm('¿Estás seguro de eliminar este maestro?')) {
                 try {
-                    const res = await fetch('/modificar-inscripcion', {
-                        method: 'PUT',
+                    const res = await fetch('/eliminar-maestro', {
+                        method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            nombre,
-                            clase
+                            nombre
                         })
                     });
-                    const data = await res.json();
-                    alert(data.mensaje);
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Error al modificar');
-                }
-            });
-
-            // Registro de maestro
-            document.getElementById('formMaestro').addEventListener('submit', async(e) => {
-                e.preventDefault();
-
-                const nombre = document.getElementById('nombreMaestro').value;
-                const especialidad = document.getElementById('especialidad').value;
-                const correo = document.getElementById('correo').value;
-                const telefono = document.getElementById('telefono').value;
-
-                try {
-                    const res = await fetch('/registrar-maestro', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            nombre,
-                            especialidad,
-                            correo,
-                            telefono
-                        })
-                    });
-
                     const data = await res.json();
                     alert(data.mensaje);
                     document.getElementById('formMaestro').reset();
                 } catch (error) {
                     console.error('Error:', error);
-                    alert('Error al registrar maestro');
+                    alert('Error al eliminar');
                 }
-            });
+            }
+        });
 
-            // Botón Eliminar Maestro
-            document.getElementById('btnEliminarMaestro').addEventListener('click', async() => {
-                const nombre = document.getElementById('nombreMaestro').value;
-                if (!nombre) {
-                    alert('Por favor ingresa un nombre para eliminar');
-                    return;
-                }
+        // Botón Modificar Maestro
+        document.getElementById('btnModificarMaestro').addEventListener('click', async() => {
+            const nombre = document.getElementById('nombreMaestro').value;
+            const especialidad = document.getElementById('especialidad').value;
+            const correo = document.getElementById('correo').value;
+            const telefono = document.getElementById('telefono').value;
 
-                if (confirm('¿Estás seguro de eliminar este maestro?')) {
-                    try {
-                        const res = await fetch('/eliminar-maestro', {
-                            method: 'DELETE',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                nombre
-                            })
-                        });
-                        const data = await res.json();
-                        alert(data.mensaje);
-                        document.getElementById('formMaestro').reset();
-                    } catch (error) {
-                        console.error('Error:', error);
-                        alert('Error al eliminar');
-                    }
-                }
-            });
+            if (!nombre) {
+                alert('Por favor ingresa un nombre para modificar');
+                return;
+            }
 
-            // Botón Modificar Maestro
-            document.getElementById('btnModificarMaestro').addEventListener('click', async() => {
-                const nombre = document.getElementById('nombreMaestro').value;
-                const especialidad = document.getElementById('especialidad').value;
-                const correo = document.getElementById('correo').value;
-                const telefono = document.getElementById('telefono').value;
-
-                if (!nombre) {
-                    alert('Por favor ingresa un nombre para modificar');
-                    return;
-                }
-
-                try {
-                    const res = await fetch('/modificar-maestro', {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            nombre,
-                            especialidad,
-                            correo,
-                            telefono
-                        })
-                    });
-                    const data = await res.json();
-                    alert(data.mensaje);
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Error al modificar');
-                }
-            });
-        </script>
+            try {
+                const res = await fetch('/modificar-maestro', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nombre,
+                        especialidad,
+                        correo,
+                        telefono
+                    })
+                });
+                const data = await res.json();
+                alert(data.mensaje);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al modificar');
+            }
+        });
+    </script>
 
 
 
-        <h3><a id="Mision">Misión</a></h3>
-        <p>Fomentar la expresión artística, la disciplina y la diversidad cultural a través de la enseñanza de múltiples estilos de danza. Nuestro estudio busca inspirar a personas de todas las edades a descubrir su pasión por el baile, desarrollando habilidades
-            técnicas, confianza y creatividad en un ambiente inclusivo y motivador.</p>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <img src="https://images.unsplash.com/photo-1550026593-f369f98df0af?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fGJhaWxlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Estudio" class="img-fluid rounded shadow dance-img">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <h3><a id="Vision">Visión</a></h3>
-        <br>
-        <p>Ser un referente en la formación integral de bailarines en México, reconocido por su excelencia académica, innovación pedagógica y compromiso con la preservación y evolución de las artes escénicas. Aspiramos a construir una comunidad vibrante
-            donde el arte del movimiento transforme vidas y conecte culturas.</p>
-        <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGJhaWxlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Estudio" class="img-fluid rounded shadow dance-img">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+    <h3><a id="Mision">Misión</a></h3>
+    <p>Fomentar la expresión artística, la disciplina y la diversidad cultural a través de la enseñanza de múltiples estilos de danza. Nuestro estudio busca inspirar a personas de todas las edades a descubrir su pasión por el baile, desarrollando habilidades
+        técnicas, confianza y creatividad en un ambiente inclusivo y motivador.</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <img src="https://images.unsplash.com/photo-1550026593-f369f98df0af?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fGJhaWxlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Estudio" class="img-fluid rounded shadow dance-img">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3><a id="Vision">Visión</a></h3>
+    <br>
+    <p>Ser un referente en la formación integral de bailarines en México, reconocido por su excelencia académica, innovación pedagógica y compromiso con la preservación y evolución de las artes escénicas. Aspiramos a construir una comunidad vibrante donde
+        el arte del movimiento transforme vidas y conecte culturas.</p>
+    <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDR8fGJhaWxlfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Estudio" class="img-fluid rounded shadow dance-img">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
-        <div class="kpop">
-            <h3><a id="kpop"> KPOP </a></h3>
-            <p>Kpop o k-pop, es también llamado pop coreano y se trata de un estilo de música que es "originaria" de Corea del Sur y tiene como peculiaridad que se encuentra conformada por distintos tipos de música, éste a pesar de que se encuentra compuesto
-                por gran diversidad de géneros musicales de tipo popular surcoreano, el término se aplica con mayor frecuencia a la Industria musical que se caracteriza por introducir géneros de música y estilos provenientes de occidente, como por ejemplo
-                el rock, el jazz, hip-hop, reggae, country y música clásica, todo ello por encima de las raíces musicales autóctonas de Corea.</p>
-            <img src="kpop.gif" alt="Kpop">
-            <br>
-            <a href="#indice">Return</a>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br><br>
-
-        <div class="folklore">
-            <h3><a id="folklore">FOLKLORE</a></h3>
-            <p>Los Bailes folklóricos en México han sido tradicionalmente una forma de honrar a la cultura mexicana y una representación de las luchas y las alegrías de la vida cotidiana mexicana. Es una celebración de los rituales religiosos y culturales
-                y festivales, que se celebra por la gente de nuestro pais. El origen de las danzas folklóricas mexicanas se encuentra en los tiempos mesoamericanos, cuando la danza ritual se realizó para apaciguar a los dioses de los Mayas y los Aztecas.</p>
-            <br>
-            <img src="folklore.gif" alt="Danza folklórica mexicana">
-            <br>
-            <a href="#indice">Return</a>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br><br>
-
-        <div class="ballet">
-            <h3><a id="ballet">BALLET</a></h3>
-            <p>El ballet es un arte escénico que puede incluir danza, música de orquesta, coro, mímica, actuación, escenografía, vestuario y relatos fantásticos. Todo depende de quién sea su creador y de la época en que se haya creado.</p>
-            <img src="ballet.gif" alt="Clase de ballet">
-            <br>
-            <a href="#indice">Return</a>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br><br>
-
-        <div class="arabe">
-            <h3><a id="danzaa">DANZA ARABE</a></h3>
-            <p>La danza árabe es una danza milenaria. Tiene su origen en Egipto, donde se bailaba en los templos, como parte del culto a la fertilidad humana, de la tierra y la adoración a los dioses. Con la invasión árabe se bailaba en los harenes de los
-                sultanes y más tarde se empezó a bailar profesionalmente.</p>
-            <img src="arabe.gif" alt="Danza árabe">
-            <br>
-            <a href="#indice">Return</a>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br><br>
-
-        <div class="contemporaneo">
-            <h3><a id="danzac">DANZA CONTEMPORANEA</a></h3>
-            <p>La danza contemporánea se entiende como la evolución natural hacia la libertad de expresión y de movimientos, eliminando las barreras de estilos más clásicos. Se basa en transmitir sentimientos y vivencias, evitando representar únicamente
-                el concepto de belleza tradicional.</p>
-            <img src="contemporaneo.gif" alt="Danza contemporánea">
-            <br>
-            <a href="#indice">Return</a>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br><br>
-
-        <div class="hiphop">
-            <h3><a id="hiphop">HIP-HOP</a></h3>
-            <p>El hip hop es conocido mundialmente como una corriente musical basada en rimar a gran velocidad sobre una base rítmica, pero en realidad es el movimiento cultural que engloba cuatro manifestaciones artísticas: DJ, MC (maestro de ceremonias
-                en español), breakdance y grafiti.</p>
-            <img src="hiphop.gif" alt="Hip-Hop">
-            <br>
-            <a href="#indice">Return</a>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br><br>
-
-        <div class="tap">
-            <h3><a id="tap">TAP</a></h3>
-            <p>El nombre viene del sonido que hacen las placas pequeñas de metal colocadas en los zapatos del bailarín cuando tocan el piso. La danza tap comenzó en el año 1830 en la vecindad de New York City como una fusión de las danzas irlandesas, escocesas
-                e inglesas y posiblemente de la combinación de la danza africana.</p>
-            <img src="tap.gif" alt="Tap">
-            <br>
-            <a href="#indice">Return</a>
-        </div>
-        <br><br><br><br><br><br><br><br><br><br><br>
-
-        <table class="tabla-con-borde">
-            <tr>
-                <th scope="row" colspan="8" id="horarios">HORARIO DE CLASES</th>
-            </tr>
-            <tr>
-                <th>HORAS</th>
-                <td>LUNES</td>
-                <td>MARTES</td>
-                <td>MIERCOLES</td>
-                <td>JUEVES</td>
-                <td>VIERNES</td>
-                <td>SABADO</td>
-                <td>DOMINGO</td>
-            </tr>
-            <tr>
-                <td>10:00-11:00</td>
-                <td>Folklore</td>
-                <td>Tap</td>
-                <td></td>
-                <td>Danza Arabe</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>11:00-12:00</td>
-                <td>Folklore</td>
-                <td>Kpop</td>
-                <td></td>
-                <td>Danza Arabe</td>
-                <td>Danza contemporanea</td>
-                <td>Hip-Hop</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>12:00-13:00</td>
-                <td></td>
-                <td></td>
-                <td>Ballet</td>
-                <td></td>
-                <td>Danza contemporanea</td>
-                <td></td>
-                <td>Tap</td>
-            </tr>
-            <tr>
-                <td>13:00-14:00</td>
-                <td></td>
-                <td></td>
-                <td>Ballet</td>
-                <td>Tap</td>
-                <td>Ballet</td>
-                <td></td>
-                <td>Tap</td>
-            </tr>
-            <tr>
-                <td>14:00-15:00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>Ballet</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>15:00-16:00</td>
-                <td></td>
-                <td>Danza Arabe</td>
-                <td>Hip-Hop</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>16:00-17:00</td>
-                <td>Hip-Hop</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>Kpop</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>17:00-18:00</td>
-                <td>Hip-Hop</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>Folklore</td>
-                <td>Kpop</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>18:00-19:00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>Danza Contemporanea</td>
-                <td>Folklore</td>
-                <td></td>
-                <td>Kpop</td>
-            </tr>
-            <tr>
-                <td>19:00-20:00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>Danza contemporanea</td>
-                <td></td>
-                <td></td>
-                <td>Danza Arabe</td>
-            </tr>
-        </table>
+    <div class="kpop">
+        <h3><a id="kpop"> KPOP </a></h3>
+        <p>Kpop o k-pop, es también llamado pop coreano y se trata de un estilo de música que es "originaria" de Corea del Sur y tiene como peculiaridad que se encuentra conformada por distintos tipos de música, éste a pesar de que se encuentra compuesto
+            por gran diversidad de géneros musicales de tipo popular surcoreano, el término se aplica con mayor frecuencia a la Industria musical que se caracteriza por introducir géneros de música y estilos provenientes de occidente, como por ejemplo
+            el rock, el jazz, hip-hop, reggae, country y música clásica, todo ello por encima de las raíces musicales autóctonas de Corea.</p>
+        <img src="kpop.gif" alt="Kpop">
         <br>
         <a href="#indice">Return</a>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
 
-        <script>
-            $(document).ready(function() {
-                // Validación de inscripción
-                $("#formInscripcion").validate({
-                    messages: {
-                        nombre: "¡Ponle nombre al bailarín!",
+    <div class="folklore">
+        <h3><a id="folklore">FOLKLORE</a></h3>
+        <p>Los Bailes folklóricos en México han sido tradicionalmente una forma de honrar a la cultura mexicana y una representación de las luchas y las alegrías de la vida cotidiana mexicana. Es una celebración de los rituales religiosos y culturales y
+            festivales, que se celebra por la gente de nuestro pais. El origen de las danzas folklóricas mexicanas se encuentra en los tiempos mesoamericanos, cuando la danza ritual se realizó para apaciguar a los dioses de los Mayas y los Aztecas.</p>
+        <br>
+        <img src="folklore.gif" alt="Danza folklórica mexicana">
+        <br>
+        <a href="#indice">Return</a>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
 
-                    }
-                });
+    <div class="ballet">
+        <h3><a id="ballet">BALLET</a></h3>
+        <p>El ballet es un arte escénico que puede incluir danza, música de orquesta, coro, mímica, actuación, escenografía, vestuario y relatos fantásticos. Todo depende de quién sea su creador y de la época en que se haya creado.</p>
+        <img src="ballet.gif" alt="Clase de ballet">
+        <br>
+        <a href="#indice">Return</a>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
 
-                // Validación de maestro
-                $("#formMaestro").validate({
-                    messages: {
-                        nombreMaestro: "¿Cómo se llama el maestro?",
-                        correo: "Ese correo no baila bien",
-                        telefono: "¡Falta el número para contactarlo!"
-                    }
-                });
+    <div class="arabe">
+        <h3><a id="danzaa">DANZA ARABE</a></h3>
+        <p>La danza árabe es una danza milenaria. Tiene su origen en Egipto, donde se bailaba en los templos, como parte del culto a la fertilidad humana, de la tierra y la adoración a los dioses. Con la invasión árabe se bailaba en los harenes de los sultanes
+            y más tarde se empezó a bailar profesionalmente.</p>
+        <img src="arabe.gif" alt="Danza árabe">
+        <br>
+        <a href="#indice">Return</a>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
 
-                // Animación en botones - CORREGIDO
-                $("button[type='submit'], button[type='button']").click(function() {
-                    const $boton = $(this);
-                    const textoOriginal = $boton.text();
-                    $boton.text("¡Listo!").fadeOut(500).fadeIn(500);
-                    setTimeout(() => {
-                        $boton.text(textoOriginal);
-                    }, 1500);
-                });
+    <div class="contemporaneo">
+        <h3><a id="danzac">DANZA CONTEMPORANEA</a></h3>
+        <p>La danza contemporánea se entiende como la evolución natural hacia la libertad de expresión y de movimientos, eliminando las barreras de estilos más clásicos. Se basa en transmitir sentimientos y vivencias, evitando representar únicamente el concepto
+            de belleza tradicional.</p>
+        <img src="contemporaneo.gif" alt="Danza contemporánea">
+        <br>
+        <a href="#indice">Return</a>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
+    <div class="hiphop">
+        <h3><a id="hiphop">HIP-HOP</a></h3>
+        <p>El hip hop es conocido mundialmente como una corriente musical basada en rimar a gran velocidad sobre una base rítmica, pero en realidad es el movimiento cultural que engloba cuatro manifestaciones artísticas: DJ, MC (maestro de ceremonias en
+            español), breakdance y grafiti.</p>
+        <img src="hiphop.gif" alt="Hip-Hop">
+        <br>
+        <a href="#indice">Return</a>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
+    <div class="tap">
+        <h3><a id="tap">TAP</a></h3>
+        <p>El nombre viene del sonido que hacen las placas pequeñas de metal colocadas en los zapatos del bailarín cuando tocan el piso. La danza tap comenzó en el año 1830 en la vecindad de New York City como una fusión de las danzas irlandesas, escocesas
+            e inglesas y posiblemente de la combinación de la danza africana.</p>
+        <img src="tap.gif" alt="Tap">
+        <br>
+        <a href="#indice">Return</a>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
+    <table class="tabla-con-borde">
+        <tr>
+            <th scope="row" colspan="8" id="horarios">HORARIO DE CLASES</th>
+        </tr>
+        <tr>
+            <th>HORAS</th>
+            <td>LUNES</td>
+            <td>MARTES</td>
+            <td>MIERCOLES</td>
+            <td>JUEVES</td>
+            <td>VIERNES</td>
+            <td>SABADO</td>
+            <td>DOMINGO</td>
+        </tr>
+        <tr>
+            <td>10:00-11:00</td>
+            <td>Folklore</td>
+            <td>Tap</td>
+            <td></td>
+            <td>Danza Arabe</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>11:00-12:00</td>
+            <td>Folklore</td>
+            <td>Kpop</td>
+            <td></td>
+            <td>Danza Arabe</td>
+            <td>Danza contemporanea</td>
+            <td>Hip-Hop</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>12:00-13:00</td>
+            <td></td>
+            <td></td>
+            <td>Ballet</td>
+            <td></td>
+            <td>Danza contemporanea</td>
+            <td></td>
+            <td>Tap</td>
+        </tr>
+        <tr>
+            <td>13:00-14:00</td>
+            <td></td>
+            <td></td>
+            <td>Ballet</td>
+            <td>Tap</td>
+            <td>Ballet</td>
+            <td></td>
+            <td>Tap</td>
+        </tr>
+        <tr>
+            <td>14:00-15:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Ballet</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>15:00-16:00</td>
+            <td></td>
+            <td>Danza Arabe</td>
+            <td>Hip-Hop</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>16:00-17:00</td>
+            <td>Hip-Hop</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Kpop</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>17:00-18:00</td>
+            <td>Hip-Hop</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Folklore</td>
+            <td>Kpop</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>18:00-19:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Danza Contemporanea</td>
+            <td>Folklore</td>
+            <td></td>
+            <td>Kpop</td>
+        </tr>
+        <tr>
+            <td>19:00-20:00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Danza contemporanea</td>
+            <td></td>
+            <td></td>
+            <td>Danza Arabe</td>
+        </tr>
+    </table>
+    <br>
+    <a href="#indice">Return</a>
+
+    <script>
+        $(document).ready(function() {
+            // Validación de inscripción
+            $("#formInscripcion").validate({
+                messages: {
+                    nombre: "¡Ponle nombre al bailarín!",
+
+                }
             });
-        </script>
+
+            // Validación de maestro
+            $("#formMaestro").validate({
+                messages: {
+                    nombreMaestro: "¿Cómo se llama el maestro?",
+                    correo: "Ese correo no baila bien",
+                    telefono: "¡Falta el número para contactarlo!"
+                }
+            });
+
+            // Animación en botones - CORREGIDO
+            $("button[type='submit'], button[type='button']").click(function() {
+                const $boton = $(this);
+                const textoOriginal = $boton.text();
+                $boton.text("¡Listo!").fadeOut(500).fadeIn(500);
+                setTimeout(() => {
+                    $boton.text(textoOriginal);
+                }, 1500);
+            });
+        });
+    </script>
 </body>
 
 </html>
