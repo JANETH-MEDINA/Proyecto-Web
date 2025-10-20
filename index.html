@@ -9,7 +9,6 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <title>DANCE STUDIO</title>
-
 </head>
 
 <body>
@@ -28,31 +27,23 @@
 
         <label for="claseInscripcion">Clase:</label>
         <select id="claseInscripcion" name="clase">
-      <option value="KPOP">KPOP</option>
-      <option value="FOLKLORE">FOLKLORE</option>
-      <option value="BALLET">BALLET</option>
-      <option value="DANZA ARABE">DANZA ARABE</option>
-      <option value="DANZA CONTEMPORANEA">DANZA CONTEMPORANEA</option>
-      <option value="HIP-HOP">HIP-HOP</option>
-      <option value="TAP">TAP</option>
-    </select>
+            <option value="KPOP">KPOP</option>
+            <option value="FOLKLORE">FOLKLORE</option>
+            <option value="BALLET">BALLET</option>
+            <option value="DANZA ARABE">DANZA ARABE</option>
+            <option value="DANZA CONTEMPORANEA">DANZA CONTEMPORANEA</option>
+            <option value="HIP-HOP">HIP-HOP</option>
+            <option value="TAP">TAP</option>
+        </select>
 
-        <button type="submit">Inscribirse</button>
-        <button type="submit">Eliminar</button>
-        <button type="submit">Modificar</button>
+        <button type="submit" id="btnInscribir">Inscribirse</button>
+        <button type="button" id="btnEliminarInscripcion">Eliminar</button>
+        <button type="button" id="btnModificarInscripcion">Modificar</button>
     </form>
-    <br>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br>
     <img src="im1.jpg" alt="Foto del estudio" style="width:100%; max-width:600px; display:block; margin:0px auto;">
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br>
+
     <h2><a id="RegistroM"> Registrar maestro </a></h2>
     <form id="formMaestro">
         <label for="nombreMaestro">Nombre:</label>
@@ -67,24 +58,17 @@
         <label for="telefono">Teléfono:</label>
         <input type="text" id="telefono" name="telefono">
 
-        <button type="submit">Registrar Maestro</button>
-        <button type="submit">Eliminar</button>
-
+        <button type="submit" id="btnRegistrarMaestro">Registrar Maestro</button>
+        <button type="button" id="btnEliminarMaestro">Eliminar</button>
+        <button type="button" id="btnModificarMaestro">Modificar</button>
     </form>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br>
     <img src="im2.jpg" alt="Foto del estudio" style="width:100%; max-width:600px; display:block; margin:20px auto;">
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br>
+
     <h2 id="indice"><a id="Clases"> CLASES QUE SE IMPARTEN Y HORARIOS</a></h2>
     <div class="menu">
         <ul>
-
             <li><a href="#Misión">MISIÓN</a></li>
             <li><a href="#Visión">VISIÓN</a></li>
             <li><a href="#kpop">KPOP</a></li>
@@ -98,8 +82,6 @@
         </ul>
     </div>
 
-
-
     <script>
         // Inscripción a clases
         document.getElementById('formInscripcion').addEventListener('submit', async(e) => {
@@ -108,19 +90,83 @@
             const nombre = document.getElementById('nombreInscripcion').value;
             const clase = document.getElementById('claseInscripcion').value;
 
-            const res = await fetch('/guardar', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    nombre,
-                    clase
-                })
-            });
+            try {
+                const res = await fetch('/guardar', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nombre,
+                        clase
+                    })
+                });
 
-            const data = await res.json();
-            alert(data.mensaje);
+                const data = await res.json();
+                alert(data.mensaje);
+                document.getElementById('formInscripcion').reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al guardar la inscripción');
+            }
+        });
+
+        // Botón Eliminar Inscripción
+        document.getElementById('btnEliminarInscripcion').addEventListener('click', async() => {
+            const nombre = document.getElementById('nombreInscripcion').value;
+            if (!nombre) {
+                alert('Por favor ingresa un nombre para eliminar');
+                return;
+            }
+
+            if (confirm('¿Estás seguro de eliminar esta inscripción?')) {
+                try {
+                    const res = await fetch('/eliminar-inscripcion', {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            nombre
+                        })
+                    });
+                    const data = await res.json();
+                    alert(data.mensaje);
+                    document.getElementById('formInscripcion').reset();
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error al eliminar');
+                }
+            }
+        });
+
+        // Botón Modificar Inscripción
+        document.getElementById('btnModificarInscripcion').addEventListener('click', async() => {
+            const nombre = document.getElementById('nombreInscripcion').value;
+            const clase = document.getElementById('claseInscripcion').value;
+
+            if (!nombre) {
+                alert('Por favor ingresa un nombre para modificar');
+                return;
+            }
+
+            try {
+                const res = await fetch('/modificar-inscripcion', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nombre,
+                        clase
+                    })
+                });
+                const data = await res.json();
+                alert(data.mensaje);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al modificar');
+            }
         });
 
         // Registro de maestro
@@ -132,217 +178,182 @@
             const correo = document.getElementById('correo').value;
             const telefono = document.getElementById('telefono').value;
 
-            const res = await fetch('/registrar-maestro', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    nombre,
-                    especialidad,
-                    correo,
-                    telefono
-                })
-            });
+            try {
+                const res = await fetch('/registrar-maestro', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nombre,
+                        especialidad,
+                        correo,
+                        telefono
+                    })
+                });
 
-            const data = await res.json();
-            alert(data.mensaje);
+                const data = await res.json();
+                alert(data.mensaje);
+                document.getElementById('formMaestro').reset();
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al registrar maestro');
+            }
+        });
+
+        // Botón Eliminar Maestro
+        document.getElementById('btnEliminarMaestro').addEventListener('click', async() => {
+            const nombre = document.getElementById('nombreMaestro').value;
+            if (!nombre) {
+                alert('Por favor ingresa un nombre para eliminar');
+                return;
+            }
+
+            if (confirm('¿Estás seguro de eliminar este maestro?')) {
+                try {
+                    const res = await fetch('/eliminar-maestro', {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            nombre
+                        })
+                    });
+                    const data = await res.json();
+                    alert(data.mensaje);
+                    document.getElementById('formMaestro').reset();
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error al eliminar');
+                }
+            }
+        });
+
+        // Botón Modificar Maestro
+        document.getElementById('btnModificarMaestro').addEventListener('click', async() => {
+            const nombre = document.getElementById('nombreMaestro').value;
+            const especialidad = document.getElementById('especialidad').value;
+            const correo = document.getElementById('correo').value;
+            const telefono = document.getElementById('telefono').value;
+
+            if (!nombre) {
+                alert('Por favor ingresa un nombre para modificar');
+                return;
+            }
+
+            try {
+                const res = await fetch('/modificar-maestro', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nombre,
+                        especialidad,
+                        correo,
+                        telefono
+                    })
+                });
+                const data = await res.json();
+                alert(data.mensaje);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al modificar');
+            }
         });
     </script>
 
-
     <br>
     <img src="Estudio1.jpg" alt="Foto del estudio" style="width:100%; max-width:600px; display:block; margin:20px auto;">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br>
 
+    <h3><a id="Mision">Misión</a></h3>
+    <p>Fomentar la expresión artística, la disciplina y la diversidad cultural a través de la enseñanza de múltiples estilos de danza. Nuestro estudio busca inspirar a personas de todas las edades a descubrir su pasión por el baile, desarrollando habilidades
+        técnicas, confianza y creatividad en un ambiente inclusivo y motivador.</p>
+    <br><br><br><br>
 
-    <h3>
-        <a id="Mision">Mision</a></h3>
-    <p>
-        Fomentar la expresión artística, la disciplina y la diversidad cultural a través de la enseñanza de múltiples estilos de danza. Nuestro estudio busca inspirar a personas de todas las edades a descubrir su pasión por el baile, desarrollando habilidades
-        técnicas, confianza y creatividad en un ambiente inclusivo y motivador.
-    </p>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h3>
-        <a id="Vision">Vision</a></h3>
-    <p>
-        Ser un referente en la formación integral de bailarines en México, reconocido por su excelencia académica, innovación pedagógica y compromiso con la preservación y evolución de las artes escénicas. Aspiramos a construir una comunidad vibrante donde el
-        arte del movimiento transforme vidas y conecte culturas.
-    </p>
-    <br>
-    <br>
-    <br>
-    <br>
+    <h3><a id="Vision">Visión</a></h3>
+    <p>Ser un referente en la formación integral de bailarines en México, reconocido por su excelencia académica, innovación pedagógica y compromiso con la preservación y evolución de las artes escénicas. Aspiramos a construir una comunidad vibrante donde
+        el arte del movimiento transforme vidas y conecte culturas.</p>
+    <br><br><br><br>
+
     <div class="kpop">
-        <h3> <a id="kpop"> KPOP </a> </h3>
-        <p>
-            Kpop o k-pop, es también llamado pop coreano y se trata de un estilo de música que es “originaria” de Corea del Sur y tiene como peculiaridad que se encuentra conformada por distintos tipos de música, éste a pesar de que se encuentra compuesto por gran
-            diversidad de géneros musicales de tipo popular surcoreano, el término se aplica con mayor frecuencia a la Industria musical que se caracteriza por introducir géneros de música y estilos provenientes de occidente, como por ejemplo el rock,
-            el jazz, hip-hop, reggae, country y música clásica, todo ello por encima de las raíces musicales autóctonas de Corea.
-        </p>
+        <h3><a id="kpop"> KPOP </a></h3>
+        <p>Kpop o k-pop, es también llamado pop coreano y se trata de un estilo de música que es "originaria" de Corea del Sur y tiene como peculiaridad que se encuentra conformada por distintos tipos de música, éste a pesar de que se encuentra compuesto
+            por gran diversidad de géneros musicales de tipo popular surcoreano, el término se aplica con mayor frecuencia a la Industria musical que se caracteriza por introducir géneros de música y estilos provenientes de occidente, como por ejemplo
+            el rock, el jazz, hip-hop, reggae, country y música clásica, todo ello por encima de las raíces musicales autóctonas de Corea.</p>
         <img src="kpop.gif" alt="Kpop">
-
         <br>
         <a href="#indice">Return</a>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
     <div class="folklore">
-        <h3>
-            <a id="folklore">FOLKLORE</a>
-        </h3>
-        <p>
-            Los Bailes folklóricos en México han sido tradicionalmente una forma de honrar a la cultura mexicana y una representación de las luchas y las alegrías de la vida cotidiana mexicana. Es una celebración de los rituales religiosos y culturales y festivales,
-            que se celebra por la gente de nuestro pais. El origen de las danzas folklóricas mexicanas se encuentra en los tiempos mesoamericanos, cuando la danza ritual se realizó para apaciguar a los dioses de los Mayas y los Aztecas.
-        </p>
+        <h3><a id="folklore">FOLKLORE</a></h3>
+        <p>Los Bailes folklóricos en México han sido tradicionalmente una forma de honrar a la cultura mexicana y una representación de las luchas y las alegrías de la vida cotidiana mexicana. Es una celebración de los rituales religiosos y culturales y
+            festivales, que se celebra por la gente de nuestro pais. El origen de las danzas folklóricas mexicanas se encuentra en los tiempos mesoamericanos, cuando la danza ritual se realizó para apaciguar a los dioses de los Mayas y los Aztecas.</p>
         <br>
         <img src="folklore.gif" alt="Danza folklórica mexicana">
-
         <br>
         <a href="#indice">Return</a>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
     <div class="ballet">
-        <h3>
-            <a id="ballet">BALLET</a></h3>
-        <p>
-            El ballet es un arte escénico que puede incluir danza, música de orquesta, coro, mímica, actuación, escenografía, vestuario y relatos fantásticos. Todo depende de quién sea su creador y de la época en que se haya creado. </p>
+        <h3><a id="ballet">BALLET</a></h3>
+        <p>El ballet es un arte escénico que puede incluir danza, música de orquesta, coro, mímica, actuación, escenografía, vestuario y relatos fantásticos. Todo depende de quién sea su creador y de la época en que se haya creado.</p>
         <img src="ballet.gif" alt="Clase de ballet">
-
         <br>
         <a href="#indice">Return</a>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
     <div class="arabe">
-        <h3>
-            <a id="danzaa">DANZA ARABE</a></h3>
-        <p>
-            La danza árabe es una danza milenaria. Tiene su origen en Egipto, donde se bailaba en los templos, como parte del culto a la fertilidad humana, de la tierra y la adoración a los dioses. Con la invasión árabe se bailaba en los harenes de los sultanes y
-            más tarde se empezó a bailar profesionalmente.</p>
-        <img src="arabe.gif" alt="Danza árabe ">
-
+        <h3><a id="danzaa">DANZA ARABE</a></h3>
+        <p>La danza árabe es una danza milenaria. Tiene su origen en Egipto, donde se bailaba en los templos, como parte del culto a la fertilidad humana, de la tierra y la adoración a los dioses. Con la invasión árabe se bailaba en los harenes de los sultanes
+            y más tarde se empezó a bailar profesionalmente.</p>
+        <img src="arabe.gif" alt="Danza árabe">
         <br>
         <a href="#indice">Return</a>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
     <div class="contemporaneo">
-        <h3>
-            <a id="danzac">DANZA CONTEMPORANEA</a></h3>
-        <p>
-            La danza contemporánea se entiende como la evolución natural hacia la libertad de expresión y de movimientos, eliminando las barreras de estilos más clásicos. Se basa en transmitir sentimientos y vivencias, evitando representar únicamente el concepto
+        <h3><a id="danzac">DANZA CONTEMPORANEA</a></h3>
+        <p>La danza contemporánea se entiende como la evolución natural hacia la libertad de expresión y de movimientos, eliminando las barreras de estilos más clásicos. Se basa en transmitir sentimientos y vivencias, evitando representar únicamente el concepto
             de belleza tradicional.</p>
         <img src="contemporaneo.gif" alt="Danza contemporánea">
         <br>
         <a href="#indice">Return</a>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="hiphop">
-        <h3>
-            <a id="hiphop">HIP-HOP</a></h3>
-        <p>
-            El hip hop es conocido mundialmente como una corriente musical basada en rimar a gran velocidad sobre una base rítmica, pero en realidad es el movimiento cultural que engloba cuatro manifestaciones artísticas: DJ, MC (maestro de ceremonias en español),
-            breakdance y grafiti.</p>
-        <img src="hip-hop.gif" alt=" Hip-Hop">
+    <br><br><br><br><br><br><br><br><br><br><br>
 
+    <div class="hiphop">
+        <h3><a id="hiphop">HIP-HOP</a></h3>
+        <p>El hip hop es conocido mundialmente como una corriente musical basada en rimar a gran velocidad sobre una base rítmica, pero en realidad es el movimiento cultural que engloba cuatro manifestaciones artísticas: DJ, MC (maestro de ceremonias en
+            español), breakdance y grafiti.</p>
+        <img src="hiphop.gif" alt="Hip-Hop">
         <br>
         <a href="#indice">Return</a>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+
     <div class="tap">
-        <h3>
-            <a id="tap">TAP</a></h3>
-        <p>
-            El nombre viene del sonido que hacen las placas pequeñas de metal colocadas en los zapatos del bailarín cuando tocan el piso.La danza tap comenzó en el año 1830 en la vecindad de New York City como una fusión de las danzas irlandesas, escocesas e inglesas
-            y posiblemente de la combinación de la danza africana.
-        </p>
-        <img src="tap.gif" alt=" Tap">
+        <h3><a id="tap">TAP</a></h3>
+        <p>El nombre viene del sonido que hacen las placas pequeñas de metal colocadas en los zapatos del bailarín cuando tocan el piso. La danza tap comenzó en el año 1830 en la vecindad de New York City como una fusión de las danzas irlandesas, escocesas
+            e inglesas y posiblemente de la combinación de la danza africana.</p>
+        <img src="tap.gif" alt="Tap">
         <br>
         <a href="#indice">Return</a>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br><br><br><br><br><br><br><br><br><br><br>
 
     <table class="tabla-con-borde">
         <tr>
             <th scope="row" colspan="8" id="horarios">HORARIO DE CLASES</th>
         </tr>
-
-        <TR>
+        <tr>
             <th>HORAS</th>
             <td>LUNES</td>
             <td>MARTES</td>
@@ -351,9 +362,8 @@
             <td>VIERNES</td>
             <td>SABADO</td>
             <td>DOMINGO</td>
-        </TR>
-
-        <TR>
+        </tr>
+        <tr>
             <td>10:00-11:00</td>
             <td>Folklore</td>
             <td>Tap</td>
@@ -362,9 +372,8 @@
             <td></td>
             <td></td>
             <td></td>
-        </TR>
-
-        <TR>
+        </tr>
+        <tr>
             <td>11:00-12:00</td>
             <td>Folklore</td>
             <td>Kpop</td>
@@ -373,9 +382,8 @@
             <td>Danza contemporanea</td>
             <td>Hip-Hop</td>
             <td></td>
-        </TR>
-
-        <TR>
+        </tr>
+        <tr>
             <td>12:00-13:00</td>
             <td></td>
             <td></td>
@@ -384,9 +392,8 @@
             <td>Danza contemporanea</td>
             <td></td>
             <td>Tap</td>
-        </TR>
-
-        <TR>
+        </tr>
+        <tr>
             <td>13:00-14:00</td>
             <td></td>
             <td></td>
@@ -395,9 +402,8 @@
             <td>Ballet</td>
             <td></td>
             <td>Tap</td>
-        </TR>
-
-        <TR>
+        </tr>
+        <tr>
             <td>14:00-15:00</td>
             <td></td>
             <td></td>
@@ -406,9 +412,8 @@
             <td>Ballet</td>
             <td></td>
             <td></td>
-        </TR>
-
-        <TR>
+        </tr>
+        <tr>
             <td>15:00-16:00</td>
             <td></td>
             <td>Danza Arabe</td>
@@ -417,8 +422,8 @@
             <td></td>
             <td></td>
             <td></td>
-        </TR>
-        <TR>
+        </tr>
+        <tr>
             <td>16:00-17:00</td>
             <td>Hip-Hop</td>
             <td></td>
@@ -427,8 +432,8 @@
             <td></td>
             <td>Kpop</td>
             <td></td>
-        </TR>
-        <TR>
+        </tr>
+        <tr>
             <td>17:00-18:00</td>
             <td>Hip-Hop</td>
             <td></td>
@@ -437,8 +442,8 @@
             <td>Folklore</td>
             <td>Kpop</td>
             <td></td>
-        </TR>
-        <TR>
+        </tr>
+        <tr>
             <td>18:00-19:00</td>
             <td></td>
             <td></td>
@@ -447,8 +452,8 @@
             <td>Folklore</td>
             <td></td>
             <td>Kpop</td>
-        </TR>
-        <TR>
+        </tr>
+        <tr>
             <td>19:00-20:00</td>
             <td></td>
             <td></td>
@@ -457,11 +462,10 @@
             <td></td>
             <td></td>
             <td>Danza Arabe</td>
-        </TR>
-    </Table>
+        </tr>
+    </table>
     <br>
     <a href="#indice">Return</a>
-
 
     <script>
         $(document).ready(function() {
@@ -469,7 +473,7 @@
             $("#formInscripcion").validate({
                 messages: {
                     nombre: "¡Ponle nombre al bailarín!",
-                    clase: "Selecciona una clase que lo haga brillar 💃"
+                    clase: "Selecciona una clase que lo haga brillar"
                 }
             });
 
@@ -477,84 +481,22 @@
             $("#formMaestro").validate({
                 messages: {
                     nombreMaestro: "¿Cómo se llama el maestro?",
-                    correo: "Ese correo no baila bien 💌",
+                    correo: "Ese correo no baila bien",
                     telefono: "¡Falta el número para contactarlo!"
                 }
             });
 
-            // Animación en botones
-            $("button[type='submit']").click(function() {
-                $(this).text("¡Listo!").fadeOut(1000).fadeIn(1000);
+            // Animación en botones - CORREGIDO
+            $("button[type='submit'], button[type='button']").click(function() {
+                const $boton = $(this);
+                const textoOriginal = $boton.text();
+                $boton.text("¡Listo!").fadeOut(500).fadeIn(500);
+                setTimeout(() => {
+                    $boton.text(textoOriginal);
+                }, 1500);
             });
         });
     </script>
-    <!-- Script de validación y envío -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const formulario = document.querySelector("#formulario");
-            const nombreInput = formulario.querySelector("#nombre");
-            const correoInput = formulario.querySelector("#correo");
-
-            if (!formulario || !nombreInput || !correoInput) {
-                console.warn("Formulario o campos no encontrados.");
-                return;
-            }
-
-            formulario.addEventListener("submit", async(e) => {
-                e.preventDefault();
-
-                const nombre = nombreInput.value.trim();
-                const correo = correoInput.value.trim();
-                const errores = [];
-
-                if (nombre.length < 3 || nombre.length > 20) {
-                    errores.push("El nombre debe tener entre 3 y 20 caracteres.");
-                }
-
-                const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!correoRegex.test(correo)) {
-                    errores.push("El correo no tiene un formato válido.");
-                }
-
-                formulario.querySelectorAll("ul.mensajes-error").forEach((el) => el.remove());
-
-                if (errores.length > 0) {
-                    const erroresContainer = document.createElement("ul");
-                    erroresContainer.classList.add("mensajes-error");
-                    erroresContainer.style.color = "red";
-
-                    errores.forEach((error) => {
-                        const li = document.createElement("li");
-                        li.textContent = error;
-                        erroresContainer.appendChild(li);
-                    });
-
-                    formulario.appendChild(erroresContainer);
-                    return;
-                }
-
-                try {
-                    const response = await fetch("/api/enviar", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            nombre,
-                            correo
-                        })
-                    });
-
-                    const result = await response.json();
-                    alert(result.mensaje || "Datos enviados correctamente");
-                } catch (error) {
-                    console.error("Error al enviar datos:", error);
-                    alert("Hubo un problema al enviar tu inscripción");
-                }
-            });
-        });
-    </script>
-
 </body>
 
 </html>
