@@ -174,7 +174,14 @@
 
             const nombre = document.getElementById('nombreInscripcion').value;
             const clase = document.getElementById('claseInscripcion').value;
-
+            if (!nombre) {
+                alert('Por favor ingresa un nombre para inscribir');
+                return;
+            }
+            if (!clase) {
+                alert('Por favor ingresa la clase a la que deseas inscribirte');
+                return;
+            }
             try {
                 const res = await fetch('/guardar', {
                     method: 'POST',
@@ -186,13 +193,7 @@
                         clase
                     })
                 });
-                // Validación de inscripción
-                $("#formInscripcion").validate({
-                    messages: {
-                        nombre: "¡Ponle nombre al bailarín!",
 
-                    }
-                });
                 const data = await res.json();
                 alert(data.mensaje);
                 document.getElementById('formInscripcion').reset();
@@ -240,6 +241,10 @@
                 alert('Por favor ingresa un nombre para modificar');
                 return;
             }
+            if (!clase) {
+                alert('Por favor ingresa una clase para modificar');
+                return;
+            }
 
             try {
                 const res = await fetch('/modificar-inscripcion', {
@@ -268,6 +273,22 @@
             const especialidad = document.getElementById('especialidad').value;
             const correo = document.getElementById('correo').value;
             const telefono = document.getElementById('telefono').value;
+            if (!nombre) {
+                alert('Por favor ingresa un nombre para registrar');
+                return;
+            }
+            if (!especialidad) {
+                alert('Por favor ingresa una especialidad para registrar');
+                return;
+            }
+            if (!correo) {
+                alert('Por favor ingresa un correo para registrar');
+                return;
+            }
+            if (!telefono) {
+                alert('Por favor ingresa un telefono para registrar');
+                return;
+            }
 
             try {
                 const res = await fetch('/registrar-maestro', {
@@ -579,7 +600,13 @@
 
     <script>
         $(document).ready(function() {
+            // Validación de inscripción
+            $("#formInscripcion").validate({
+                messages: {
+                    nombre: "¡Ponle nombre al bailarín!",
 
+                }
+            });
 
             // Validación de maestro
             $("#formMaestro").validate({
@@ -590,7 +617,7 @@
                 }
             });
 
-            // Animación en botones - CORREGIDO
+            // Animación en botones
             $("button[type='submit'], button[type='button']").click(function() {
                 const $boton = $(this);
                 const textoOriginal = $boton.text();
