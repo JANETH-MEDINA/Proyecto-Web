@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="index.css">
+    <title>Login - Dance Studio</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        .login-left {
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            color: white;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-right {
+            padding: 60px 40px;
+        }
+        
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-card animate__animated animate__fadeIn">
+            <div class="row g-0">
+                <div class="col-md-5 login-left">
+                    <div class="text-center">
+                        <i class="bi bi-music-note-beamed logo"></i>
+                        <h2 class="mb-4">Dance Studio</h2>
+                        <p>Sistema de Gestión Integral</p>
+                        <p class="small mt-4">Accede con tu usuario y contraseña</p>
+                    </div>
+                </div>
+
+                <div class="col-md-7 login-right">
+                    <h3 class="mb-4">Iniciar Sesión</h3>
+
+                    <form id="formLogin" novalidate>
+                        <div class="mb-3">
+                            <label for="usuarioLogin" class="form-label">
+                                <i class="bi bi-person"></i> Usuario
+                            </label>
+                            <input type="text" class="form-control" id="usuarioLogin" name="usuario" required placeholder="Ingresa tu usuario">
+                            <div class="invalid-feedback">Ingresa tu usuario</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="passwordLogin" class="form-label">
+                                <i class="bi bi-lock"></i> Contraseña
+                            </label>
+                            <input type="password" class="form-control" id="passwordLogin" name="password" required placeholder="Ingresa tu contraseña">
+                            <div class="invalid-feedback">Ingresa tu contraseña</div>
+                        </div>
+
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+                            </button>
+                        </div>
+
+                        <div class="text-center">
+                            <p class="text-muted small">¿No tienes cuenta? Contacta al administrador</p>
+                        </div>
+                    </form>
+
+                    <hr>
+
+                    <div class="alert alert-info small">
+                        <strong>Usuarios de prueba:</strong><br>
+                        <strong>Admin:</strong> admin / admin123<br>
+                        <strong>Maestro:</strong> maestro_ballet / maestro123<br>
+                        <strong>Usuario:</strong> alumno1 / usuario123
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="login.js"></script>
+</body>
+
+</html>
