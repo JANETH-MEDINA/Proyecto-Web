@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dance Studio - Escuela de baile profesional en Morelia">
+    <meta name="keywords" content="danza, ballet, hip-hop, folklore, clases de baile">
+
+    <!-- PASO 10: Bootstrap como Framework -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <!-- Animate.css para efectos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- PASO 6: CSS Personalizado -->
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="formato.css">
+
+    <title>Dance Studio - Inicio</title>
+</head>
+
+<body>
+    <!-- PASO 5: Estructura correcta del index -->
+
+    <!-- Header con navegación -->
+    <header class="header-principal">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand animate__animated animate__fadeInLeft" href="index.html">
+                    <i class="bi bi-music-note-beamed"></i>
+                    <strong>DANCE STUDIO</strong>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#clases">Clases</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#inscripcion">Inscripción</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#horarios">Horarios</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="productos.html">
+                                <i class="bi bi-bag"></i> Productos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="usuarios.html">
+                                <i class="bi bi-people"></i> Usuarios
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="container text-center">
+                <h1 class="display-3 text-white animate__animated animate__fadeInDown">
+                    Bienvenido a Dance Studio
+                </h1>
+                <p class="lead text-white animate__animated animate__fadeInUp">
+                    Descubre tu pasión por el baile. Clases profesionales para todos los niveles.
+                </p>
+                <a href="#inscripcion" class="btn btn-primary btn-lg animate__animated animate__zoomIn">
+                    <i class="bi bi-calendar-check"></i> Inscríbete Ahora
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <!-- Misión y Visión -->
+        <section id="nosotros" class="mb-5">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow animate__animated">
+                        <div class="card-body">
+                            <h3 class="card-title text-primary">
+                                <i class="bi bi-bullseye"></i> Misión
+                            </h3>
+                            <p class="card-text">
+                                Fomentar la expresión artística, la disciplina y la diversidad cultural a través de la enseñanza de múltiples estilos de danza. Nuestro estudio busca inspirar a personas de todas las edades a descubrir su pasión por el baile, desarrollando habilidades
+                                técnicas, confianza y creatividad en un ambiente inclusivo y motivador.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow animate__animated">
+                        <div class="card-body">
+                            <h3 class="card-title text-primary">
+                                <i class="bi bi-eye"></i> Visión
+                            </h3>
+                            <p class="card-text">
+                                Ser un referente en la formación integral de bailarines en México, reconocido por su excelencia académica, innovación pedagógica y compromiso con la preservación y evolución de las artes escénicas. Aspiramos a construir una comunidad vibrante donde el
+                                arte del movimiento transforme vidas y conecte culturas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PASO 15: Mostrar contenido de la BD (Clases dinámicas con AJAX) -->
+        <section id="clases" class="mb-5">
+            <h2 class="text-center mb-4">
+                <i class="bi bi-music-note-list"></i> Nuestras Clases
+            </h2>
+
+            <div id="listaClases" class="row">
+                <!-- Las clases se cargarán dinámicamente con AJAX -->
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Cargando clases...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PASO 5: Formulario de Inscripción -->
+        <section id="inscripcion" class="mb-5">
+            <h2 class="text-center mb-4">
+                <i class="bi bi-pencil-square"></i> Inscripción a Clases
+            </h2>
+
+            <div class="card form-card shadow-lg">
+                <div class="card-body">
+                    <!-- PASO 10: Formulario con validación -->
+                    <form id="formInscripcion" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nombreAlumno" class="form-label">
+                                    <i class="bi bi-person"></i> Nombre Completo *
+                                </label>
+                                <input type="text" class="form-control" id="nombreAlumno" name="nombreAlumno" required minlength="3" placeholder="Tu nombre completo">
+                                <div class="invalid-feedback">Ingresa tu nombre completo (mínimo 3 caracteres)</div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="claseSeleccionada" class="form-label">
+                                    <i class="bi bi-music-note"></i> Clase *
+                                </label>
+                                <select class="form-select" id="claseSeleccionada" name="claseSeleccionada" required>
+                                    <option value="" selected disabled>Selecciona una clase...</option>
+                                     <option value="KPOP">Kpop</option>
+                                     <option value="FOLKLORE">Folklore</option>
+                                     <option value="BALLET">Ballet</option>
+                                     <option value="DANZA ARABE">Danza Arabe</option>
+                                     <option value="DANZA CONTEMPORANEA">Danza Contemporanea</option>
+                                     <option value="HIP-HOP">Hip-Hop</option>
+                                     <option value="TAP">Tap</option>
+                                </select>
+                                <div class="invalid-feedback">Selecciona una clase</div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="fechaInicio" class="form-label">
+                                    <i class="bi bi-calendar"></i> Fecha de Inicio
+                                </label>
+                                <input type="date" class="form-control" id="fechaInicio" name="fechaInicio">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="notasInscripcion" class="form-label">
+                                    <i class="bi bi-chat-text"></i> Notas (opcional)
+                                </label>
+                                <input type="text" class="form-control" id="notasInscripcion" placeholder="Horario preferido, nivel, etc.">
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-check-circle"></i> Inscribirme
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- PASO 15: Mostrar inscripciones de la BD -->
+        <section id="inscripciones-lista" class="mb-5">
+            <h3 class="text-center mb-4">Inscripciones Recientes</h3>
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Alumno</th>
+                                    <th>Clase</th>
+                                    <th>Fecha Inscripción</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablainscripciones">
+                                <tr>
+                                    <td colspan="4" class="text-center">
+                                        <div class="spinner-border spinner-border-sm" role="status"></div>
+                                        Cargando...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Horarios -->
+        <section id="horarios" class="mb-5">
+            <h2 class="text-center mb-4">
+                <i class="bi bi-clock"></i> Horarios de Clases
+            </h2>
+
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover horarios-table">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Día</th>
+                                    <th>Hora</th>
+                                    <th>Clase</th>
+                                    <th>Maestro</th>
+                                    <th>Salón</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaHorarios">
+                                <tr>
+                                    <td colspan="5" class="text-center">
+                                        <div class="spinner-border spinner-border-sm" role="status"></div>
+                                        Cargando horarios...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Maestros -->
+        <section id="maestros" class="mb-5">
+            <h2 class="text-center mb-4">
+                <i class="bi bi-person-badge"></i> Nuestros Maestros
+            </h2>
+
+            <div id="listaMaestros" class="row">
+                <!-- Se llenarán dinámicamente -->
+                <div class="col-12 text-center">
+                    <div class="spinner-border text-primary" role="status"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5><i class="bi bi-music-note-beamed"></i> Dance Studio</h5>
+                    <p>Transformando vidas a través de la danza desde 2025</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contacto</h5>
+                    <p>
+                        <i class="bi bi-geo-alt"></i> Morelia, Michoacán<br>
+                        <i class="bi bi-telephone"></i> (443) 465-8704<br>
+                        <i class="bi bi-envelope"></i> info@dancestudio.com
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#clases" class="text-white">Clases</a></li>
+                        <li><a href="productos.html" class="text-white">Productos</a></li>
+                        <li><a href="usuarios.html" class="text-white">Usuarios</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-white">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Dance Studio. Proyecto Programación Web.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 1. jQuery PRIMERO -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- 2. Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- 3. jQuery Validate DESPUÉS de jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
+
+    <!-- 4. Tu script al FINAL -->
+    <script src="auth.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
