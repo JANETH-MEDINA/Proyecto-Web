@@ -1,10 +1,7 @@
-// ===================================================================
-// DANCE STUDIO - SERVIDOR NODE.JS COMPLETO
-// Backend con Express + PostgreSQL
-// ===================================================================
-
-// PASO 2: Instalar y configurar el servidor Web
+// Instalar y configurar el servidor Web
 require('dotenv').config();
+const https = require('https');
+const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
@@ -12,10 +9,15 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
+const sslOptions = {
+    key: fs.readFileSync('./localhost-key.pem'), // o la ruta completa si estás en producción
+    cert: fs.readFileSync('./localhost.pem')
+};
+
 const port = process.env.PORT || 3002;
 
 // ===================================================================
-// PASO 3: Configurar Base de Datos PostgreSQL
+// Configuración de Base de Datos PostgreSQL
 // ===================================================================
 const pool = new Pool({
     user: process.env.DB_USER || 'postgres',
@@ -65,7 +67,7 @@ app.use((req, res, next) => {
 
 // ========== RUTAS PRINCIPALES ==========
 
-// PASO 2: Crear página de inicio (index)
+// Crear página de inicio (index)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'login.html'));
 });
@@ -122,7 +124,7 @@ app.post('/api/logout', (req, res) => {
 });
 
 // ===================================================================
-// PASO 4: PROBAR ACCESO A PÁGINA Y BD
+// PROBAR ACCESO A PÁGINA Y BD
 // ===================================================================
 
 // Endpoint de prueba
@@ -141,7 +143,7 @@ app.get('/api/test', async(req, res) => {
 });
 
 // ===================================================================
-// PASO 13: RUTAS DE PRODUCTOS/SERVICIOS
+// RUTAS DE PRODUCTOS/SERVICIOS
 // ===================================================================
 
 // Obtener todos los productos/servicios
@@ -191,7 +193,7 @@ app.get('/api/productos/:id', async(req, res) => {
 app.post('/api/productos', async(req, res) => {
     const { nombre, tipo, descripcion, precio, stock, imagen_url, categoria } = req.body;
 
-    // PASO 10: Validación del lado del cliente (también en servidor)
+    // Validación del lado del cliente (también en servidor)
     if (!nombre || !tipo || !descripcion || precio === undefined) {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
@@ -216,7 +218,7 @@ app.post('/api/productos', async(req, res) => {
     }
 });
 
-// PASO 15: Actualizar producto (almacenar y actualizar información en BD)
+// Actualizar producto (almacenar y actualizar información en BD)
 app.put('/api/productos/:id', async(req, res) => {
     const { id } = req.params;
     const { nombre, tipo, descripcion, precio, stock, imagen_url, categoria } = req.body;
@@ -263,7 +265,7 @@ app.delete('/api/productos/:id', async(req, res) => {
 });
 
 // ===================================================================
-// PASO 14: RUTAS DE USUARIOS (CRUD + Roles + Permisos)
+// RUTAS DE USUARIOS (CRUD + Roles + Permisos)
 // ===================================================================
 
 // Obtener todos los usuarios
@@ -318,7 +320,7 @@ app.post('/api/usuarios', async(req, res) => {
         return res.status(400).json({ error: 'Faltan datos requeridos' });
     }
 
-    // PASO 14: Validar rol correcto
+    // Validar rol correcto
     if (!['admin', 'maestro', 'usuario'].includes(rol)) {
         return res.status(400).json({ error: 'Rol inválido. Debe ser: admin, maestro o usuario' });
     }
@@ -333,10 +335,6 @@ app.post('/api/usuarios', async(req, res) => {
     }
 
     try {
-        // PASO 14: Cifrar contraseñas (en producción usar bcrypt)
-        // const bcrypt = require('bcrypt');
-        // const password_hash = await bcrypt.hash(password, 10);
-        // Por ahora guardamos simple (SOLO DESARROLLO)
 
         const result = await pool.query(
             'INSERT INTO usuarios (nombre_usuario, email, password_hash, nombre_completo, rol, telefono, direccion, fecha_nacimiento) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id, nombre_usuario, email, nombre_completo, rol', [nombre_usuario, email, password, nombre_completo, rol, telefono, direccion, fecha_nacimiento]
@@ -531,16 +529,23 @@ app.use((err, req, res, next) => {
 });
 
 // ===================================================================
-// INICIAR SERVIDOR
+// INICIAR SERVIDOR (cambie el app.listen por el https)
 // ===================================================================
-app.listen(port, '0.0.0.0', () => {
-    console.log('═══════════════════════════════════════════');
-    console.log('🎵 DANCE STUDIO - Servidor Node.js');
-    console.log(`🌐 URL: http://localhost:${port}/`);
-    console.log(`📅 Fecha: ${new Date().toLocaleString()}`);
-    console.log(`🔧 Entorno: ${process.env.NODE_ENV || 'development'}`);
-    console.log('═══════════════════════════════════════════');
+const http = require('http');
+
+http.createServer((req, res) => {
+    res.writeHead(301, {
+        Location: `https://${req.headers.host.replace(':3000', ':3002')}${req.url}`
+    });
+    res.end();
+}).listen(3000, () => {
+    console.log('🌐 Redirección HTTP activa en el puerto 3000');
 });
+
+https.createServer(sslOptions, app).listen(3002, () => {
+    console.log('🔒 Servidor HTTPS activo en el puerto 3002');
+});
+
 
 // Graceful shutdown
 process.on('SIGTERM', async() => {
