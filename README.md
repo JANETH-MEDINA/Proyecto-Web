@@ -6,7 +6,7 @@ Sistema integral de gestión para estudio de baile con Node.js, PostgreSQL, jQue
 
 ---
 
-## 📋 Índice
+## Índice
 
 1. [Descripción del Proyecto](#descripción-del-proyecto)
 2. [Funcionalidades Implementadas](#funcionalidades-implementadas)
@@ -24,7 +24,7 @@ Sistema integral de gestión para estudio de baile con Node.js, PostgreSQL, jQue
 
 ---
 
-## 📝 Descripción del Proyecto
+## Descripción del Proyecto
 
 **Dance Studio** es un sistema web completo para la gestión de un estudio de baile que incluye:
 
@@ -37,7 +37,7 @@ Sistema integral de gestión para estudio de baile con Node.js, PostgreSQL, jQue
 
 ---
 
-## ✨ Funcionalidades Implementadas
+## Funcionalidades Implementadas
 
 ### **PASO 1-4: Fundamentos**
 - ✅ **PASO 1**: Interpretación de idea del cliente
@@ -114,7 +114,7 @@ Sistema integral de gestión para estudio de baile con Node.js, PostgreSQL, jQue
 
 ---
 
-## 🔧 Requisitos Previos
+## Requisitos Previos
 
 Antes de comenzar, asegúrate de tener instalado:
 
@@ -125,7 +125,7 @@ Antes de comenzar, asegúrate de tener instalado:
 
 ---
 
-## 🚀 Instalación
+## Instalación
 
 ### **1. Clonar el repositorio**
 
@@ -186,7 +186,7 @@ Deberías ver:
 
 ---
 
-## ⚙️ Configuración
+## Configuración
 
 ### **1. Crear archivo .env**
 
@@ -219,7 +219,7 @@ Deberías ver:
 ```
 ═══════════════════════════════════════════
 🎵 DANCE STUDIO - Servidor Node.js
-🌐 URL: http://localhost:3001/
+🌐 URL: http://localhost:3002/
 📅 Fecha: ...
 ═══════════════════════════════════════════
 ✅ Conectado a PostgreSQL
@@ -228,7 +228,7 @@ Deberías ver:
 
 ---
 
-## 💻 Uso del Sistema
+## Uso del Sistema
 
 ### **Iniciar el servidor**
 
@@ -259,7 +259,7 @@ Abre tu navegador en: **http://localhost:3001**
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 dance-studio/
@@ -286,7 +286,7 @@ dance-studio/
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### **Backend**
 - **Node.js** v14+
@@ -313,7 +313,7 @@ dance-studio/
 
 ---
 
-## 🌐 API Endpoints
+## API Endpoints
 
 ### **Productos/Servicios**
 
@@ -347,7 +347,7 @@ dance-studio/
 
 ---
 
-## 🔄 Control de Versiones (GitHub)
+## Control de Versiones (GitHub)
 
 ### **Inicializar Git**
 
@@ -396,7 +396,7 @@ git log --oneline --graph
 
 ---
 
-## ✅ Validación y Calidad
+## Validación y Calidad
 
 ### **Validar HTML**
 
@@ -424,7 +424,7 @@ git log --oneline --graph
 
 ---
 
-## 🐛 Solución de Problemas
+## Solución de Problemas
 
 ### **Error: "Cannot connect to database"**
 
@@ -477,7 +477,7 @@ npm install
 
 ---
 
-## 📱 Diseño Responsivo
+## Diseño Responsivo
 
 El sistema es 100% responsivo y funciona en:
 
@@ -487,7 +487,7 @@ El sistema es 100% responsivo y funciona en:
 
 ---
 
-## 🎓 Para Producción
+## Para Producción
 
 ### **1. Instalar bcrypt para contraseñas**
 
@@ -526,29 +526,12 @@ pm2 startup
 
 ---
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto es para fines educativos - Proyecto de Programación Web.
 
----
 
-## 👨‍💻 Autor
-
-**Tu Nombre**  
-Proyecto de Programación Web - TecNM
-
----
-
-## 🙏 Agradecimientos
-
-- Unsplash por las imágenes
-- Bootstrap por el framework
-- jQuery por la librería
-- PostgreSQL por la base de datos
-
----
-
-## 📞 Soporte
+## Soporte
 
 Si tienes problemas:
 
@@ -560,5 +543,3 @@ Si tienes problemas:
 ---
 
 **¡Listo para usar! 💃🕺**
-
-© 2024 Dance Studio. Todos los derechos reservados.
