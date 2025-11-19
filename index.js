@@ -1,11 +1,3 @@
-// ===================================================================
-// DANCE STUDIO - index.js CORREGIDO
-// ===================================================================
-
-// ===================================================================
-// DANCE STUDIO - INDEX.JS CORREGIDO (Sin errores de sintaxis)
-// ===================================================================
-
 $(document).ready(function() {
     console.log('🎵 Dance Studio - Sistema iniciado');
 
@@ -240,7 +232,7 @@ function mostrarHorarios(horarios) {
 }
 
 // ===================================================================
-// 🔧 CORREGIDO: CARGAR INSCRIPCIONES (sin errores de sintaxis)
+// CARGAR INSCRIPCIONES
 // ===================================================================
 async function cargarInscripciones() {
     try {
@@ -285,7 +277,7 @@ function mostrarInscripciones(inscripciones) {
 }
 
 // ===================================================================
-// 🔧 CORREGIDO: ENVIAR INSCRIPCIÓN (sin errores de sintaxis)
+// ENVIAR INSCRIPCIÓN 
 // ===================================================================
 async function enviarInscripcion() {
     const datos = {
