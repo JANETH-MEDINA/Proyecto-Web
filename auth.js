@@ -1,9 +1,3 @@
-// ===================================================================
-// DANCE STUDIO - auth.js
-// Verificar sesión y permisos
-// Incluir este script en TODAS las páginas protegidas
-// ===================================================================
-
 (function() {
     'use strict';
 
