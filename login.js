@@ -1,10 +1,6 @@
 // ===================================================================
-// DANCE STUDIO - login.js CORREGIDO
-// Sistema de autenticación con roles
-// ===================================================================
-
-// 🔧 CONFIGURACIÓN DEL SERVIDOR
-const API_URL = 'http://localhost:3002'; // ⚠️ CAMBIAR SEGÚN TU PUERTO
+// CONFIGURACIÓN DEL SERVIDOR
+const API_URL = 'https://localhost:3002'; // CAMBIAR SEGÚN EL PUERTO
 
 $(document).ready(function() {
     console.log('🔐 Sistema de login iniciado');
@@ -63,7 +59,7 @@ function verificarSesion() {
 }
 
 // ===================================================================
-// INICIAR SESIÓN - VERSIÓN CORREGIDA
+// INICIAR SESIÓN 
 // ===================================================================
 async function iniciarSesion() {
     const usuario = $('#usuarioLogin').val().trim();
@@ -83,7 +79,7 @@ async function iniciarSesion() {
         // Deshabilitar botón
         $btnSubmit.html('<span class="spinner-border spinner-border-sm"></span> Validando...').prop('disabled', true);
 
-        // 🔧 PETICIÓN CORREGIDA CON URL COMPLETA
+        // PETICIÓN CORREGIDA CON URL COMPLETA
         const response = await fetch(`${API_URL}/api/login`, {
             method: 'POST',
             headers: {
@@ -202,7 +198,7 @@ async function probarConexion() {
         return true;
     } catch (error) {
         console.error('❌ No se puede conectar con el servidor:', error);
-        mostrarAlerta('No se puede conectar con el servidor. Verifica que esté corriendo en el puerto 3001', 'danger');
+        mostrarAlerta('No se puede conectar con el servidor. Verifica que esté corriendo en el puerto 3002', 'danger');
         return false;
     }
 }
