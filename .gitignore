@@ -1,30 +1,21 @@
-# ===================================================================
-# DANCE STUDIO - .gitignore
-# PASO 7 y 11: Control de versiones en GitHub
-# ===================================================================
 
-# ===================================================================
 # DEPENDENCIAS DE NODE.JS
-# ===================================================================
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 package-lock.json
 
-# ===================================================================
-# VARIABLES DE ENTORNO (¡MUY IMPORTANTE!)
-# PASO 14: Proteger contraseñas cifradas
-# ===================================================================
+# VARIABLES DE ENTORNO 
+# Proteger contraseñas cifradas
+
 .env
 .env.local
 .env.development
 .env.production
 .env.test
 
-# ===================================================================
 # ARCHIVOS DEL SISTEMA OPERATIVO
-# ===================================================================
 # macOS
 .DS_Store
 .AppleDouble
@@ -42,9 +33,8 @@ $RECYCLE.BIN/
 *~
 .directory
 
-# ===================================================================
+
 # IDEs Y EDITORES
-# ===================================================================
 # Visual Studio Code
 .vscode/
 *.code-workspace
@@ -61,10 +51,7 @@ $RECYCLE.BIN/
 
 # Atom
 .atom/
-
-# ===================================================================
 # LOGS Y TEMPORALES
-# ===================================================================
 logs/
 *.log
 npm-debug.log*
@@ -75,25 +62,16 @@ pids/
 *.pid
 *.seed
 *.pid.lock
-
-# ===================================================================
 # ARCHIVOS DE BUILD Y DISTRIBUCIÓN
-# ===================================================================
 dist/
 build/
 out/
 .cache/
-
-# ===================================================================
-# ARCHIVOS DE PRUEBAS
-# ===================================================================
 coverage/
 .nyc_output/
 *.lcov
 
-# ===================================================================
 # ARCHIVOS TEMPORALES
-# ===================================================================
 tmp/
 temp/
 *.tmp
@@ -101,23 +79,11 @@ temp/
 *.swp
 *.swo
 
-# ===================================================================
 # UPLOADS Y ARCHIVOS DE USUARIO
-# ===================================================================
 uploads/
 public/uploads/
 
-# ===================================================================
-# BASE DE DATOS (si usas SQLite)
-# ===================================================================
+# BASE DE DATOS (SQLite)
 *.sqlite
 *.sqlite3
 *.db
-
-# ===================================================================
-# NOTAS:
-# - Este archivo protege información sensible
-# - NUNCA subir .env a GitHub
-# - NUNCA subir node_modules (demasiado pesado)
-# - Mantener actualizado según necesidades del proyecto
-# ===================================================================
