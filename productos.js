@@ -1,27 +1,21 @@
-// ===================================================================
-// DANCE STUDIO - PRODUCTOS.JS
-// PASO 15: AJAX para productos/servicios
-// PASO 5: Altas, modificaciones y eliminación
-// ===================================================================
-
 let productoEditando = null;
 
-// PASO 9: jQuery Document Ready
+// jQuery Document Ready
 $(document).ready(function() {
     console.log('🛍️ Módulo de Productos iniciado');
 
-    // PASO 15: Cargar productos al iniciar
+    // Cargar productos al iniciar
     cargarProductos();
 
-    // PASO 10: Configurar validación
+    // Configurar validación
     configurarValidacion();
 
-    // PASO 9: Configurar eventos
+    //Configurar eventos
     configurarEventos();
 });
 
 // ===================================================================
-// PASO 10: VALIDACIÓN DEL FORMULARIO
+// VALIDACIÓN DEL FORMULARIO
 // ===================================================================
 function configurarValidacion() {
     $("#formProducto").validate({
@@ -63,7 +57,7 @@ function configurarValidacion() {
 }
 
 // ===================================================================
-// PASO 9: CONFIGURAR EVENTOS DINÁMICOS
+// CONFIGURAR EVENTOS DINÁMICOS
 // ===================================================================
 function configurarEventos() {
     // Evento submit del formulario
@@ -101,7 +95,7 @@ function configurarEventos() {
 }
 
 // ===================================================================
-// PASO 15: CARGAR PRODUCTOS CON AJAX
+// CARGAR PRODUCTOS CON AJAX
 // ===================================================================
 async function cargarProductos(filtro = '') {
     try {
@@ -187,7 +181,7 @@ function mostrarProductos(productos) {
 }
 
 // ===================================================================
-// PASO 5: GUARDAR PRODUCTO (ALTA)
+// GUARDAR PRODUCTO
 // ===================================================================
 async function guardarProducto() {
     const producto = {
@@ -230,7 +224,7 @@ async function guardarProducto() {
 }
 
 // ===================================================================
-// PASO 5: EDITAR PRODUCTO (MODIFICACIÓN)
+// EDITAR PRODUCTO
 // ===================================================================
 async function editarProducto(id) {
     try {
@@ -269,7 +263,7 @@ async function editarProducto(id) {
 }
 
 // ===================================================================
-// PASO 15: ACTUALIZAR PRODUCTO (MODIFICACIÓN)
+// ACTUALIZAR PRODUCTO
 // ===================================================================
 async function actualizarProducto() {
     if (!productoEditando) {
@@ -313,7 +307,7 @@ async function actualizarProducto() {
 }
 
 // ===================================================================
-// PASO 5: ELIMINAR PRODUCTO
+// ELIMINAR PRODUCTO
 // ===================================================================
 async function eliminarProducto(id, nombre) {
     if (!await confirmarAccion(`¿Eliminar "${nombre}"?`, 'Esta acción no se puede deshacer.')) {
