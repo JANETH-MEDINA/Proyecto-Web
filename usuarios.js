@@ -1,7 +1,3 @@
-// ===================================================================
-// DANCE STUDIO - USUARIOS.JS CORREGIDO
-// ===================================================================
-
 let usuarioEditando = null;
 
 $(document).ready(function() {
@@ -103,11 +99,11 @@ function configurarEventos() {
 }
 
 // ===================================================================
-// 🔧 CORREGIDO: CARGAR USUARIOS CON AJAX
+// CARGAR USUARIOS CON AJAX
 // ===================================================================
 async function cargarUsuarios(filtroRol = '') {
     try {
-        // ✅ CAMBIO: Usar ruta relativa como en productos.js
+
         const url = filtroRol ?
             `/api/usuarios?rol=${filtroRol}` :
             '/api/usuarios';
@@ -201,7 +197,7 @@ function mostrarUsuarios(usuarios) {
 }
 
 // ===================================================================
-// 🔧 CORREGIDO: CREAR USUARIO
+// CREAR USUARIO
 // ===================================================================
 async function crearUsuario() {
     const password = $('#passwordUsuario').val();
@@ -209,8 +205,6 @@ async function crearUsuario() {
         mostrarAlerta('La contraseña es requerida y debe tener al menos 6 caracteres', 'warning');
         return;
     }
-
-    // ✅ CAMBIO: Estructura simplificada como productos.js
     const usuario = {
         nombre_usuario: $('#nombreUsuario').val().trim(),
         email: $('#emailUsuario').val().trim(),
@@ -227,7 +221,6 @@ async function crearUsuario() {
         const textoOriginal = $btnSubmit.html();
         $btnSubmit.html('<span class="spinner-border spinner-border-sm"></span> Creando...').prop('disabled', true);
 
-        // ✅ CAMBIO: Usar ruta relativa
         const response = await $.ajax({
             url: '/api/usuarios',
             method: 'POST',
@@ -257,11 +250,11 @@ async function crearUsuario() {
 }
 
 // ===================================================================
-// 🔧 CORREGIDO: EDITAR USUARIO
+// EDITAR USUARIO
 // ===================================================================
 async function editarUsuario(id) {
     try {
-        // ✅ CAMBIO: Usar ruta relativa
+
         const response = await $.ajax({
             url: `/api/usuarios/${id}`,
             method: 'GET'
@@ -296,7 +289,7 @@ async function editarUsuario(id) {
 }
 
 // ===================================================================
-// 🔧 CORREGIDO: ACTUALIZAR USUARIO
+//  ACTUALIZAR USUARIO
 // ===================================================================
 async function actualizarUsuario() {
     if (!usuarioEditando) {
@@ -324,7 +317,6 @@ async function actualizarUsuario() {
         const textoOriginal = $btnActualizar.html();
         $btnActualizar.html('<span class="spinner-border spinner-border-sm"></span> Actualizando...').prop('disabled', true);
 
-        // ✅ CAMBIO: Usar ruta relativa
         const response = await $.ajax({
             url: `/api/usuarios/${usuarioEditando}`,
             method: 'PUT',
@@ -354,7 +346,7 @@ async function actualizarUsuario() {
 }
 
 // ===================================================================
-// 🔧 CORREGIDO: ELIMINAR USUARIO
+// ELIMINAR USUARIO
 // ===================================================================
 async function eliminarUsuario(id, nombreUsuario) {
     if (!await confirmarAccion(
@@ -365,7 +357,6 @@ async function eliminarUsuario(id, nombreUsuario) {
     }
 
     try {
-        // ✅ CAMBIO: Usar ruta relativa
         const response = await $.ajax({
             url: `/api/usuarios/${id}`,
             method: 'DELETE',
@@ -403,7 +394,7 @@ function limpiarFormulario() {
 }
 
 // ===================================================================
-// MOSTRAR ALERTAS (igual que productos.js)
+// MOSTRAR ALERTAS 
 // ===================================================================
 function mostrarAlerta(mensaje, tipo) {
     const iconos = {
@@ -434,7 +425,7 @@ function mostrarAlerta(mensaje, tipo) {
 }
 
 // ===================================================================
-// CONFIRMAR ACCIONES (igual que productos.js)
+// CONFIRMAR ACCIONES 
 // ===================================================================
 function confirmarAccion(titulo, mensaje) {
     return new Promise((resolve) => {
